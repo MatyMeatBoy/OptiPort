@@ -4,6 +4,8 @@ Aplicar al preparar un build, paquete o release, ajustando profundidad al cambio
 
 Elegir escenarios breves y automatizables por patrón de riesgo: transición, acceso límite, recurso fallido, cambio de arquitectura o recuperación de estado. No exigir una partida completa de principio a fin como gate universal. Reservar sesiones prolongadas para riesgos de acumulación y declarar por separado lo que no se cubrió.
 
+Convertir cada crash de usuario reproducido en una regresión estable con nombre, escenario mínimo y postcondición observable; `exit 0` solo no prueba que el flujo se completó. Registrar matriz de arquitecturas/configuraciones afectadas y procedencia inmutable de fixtures privados, con sustituto público saneado si puede construirse y redistribuirse. Conservar la regresión en entregas futuras, incluidas migraciones de arquitectura, y ejecutarla sobre el artefacto empaquetado exacto tras reconstruirlo. Ejemplo: cargar la misma copia de SRAM y entrar al primer cuarto debe alcanzar el estado de mapa esperado, no sólo evitar la excepción. Un crash conocido reproducible dentro del alcance anunciado bloquea readiness hasta corregirlo y verificarlo; esto no promete ausencia de fallos desconocidos.
+
 ## Evidencia mínima para decidir
 
 Registrar por control **pass**, **fail**, **unverified** o **N/A**, con evidencia y motivo. `N/A` necesita una razón de alcance; falta de hardware es `unverified`. Un harness, un arranque o una plataforma aprobada no certifican las demás.
