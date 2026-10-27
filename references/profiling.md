@@ -12,4 +12,22 @@ Elegir un cambio ligado al cuello observado y verificar rendimiento junto con ca
 
 ## Vista profunda de tirones
 
-Antes de cambiar nada por un tirón, atribuirlo cuadro a cuadro: para cada cuadro que supere el presupuesto, registrar la duración de cada etapa (lógica, composición, presentación) y los costes puntuales de ese cuadro (cargas con lectura/decode/subida separadas, compilación de shaders o glifos, creación de recursos) con el nombre del último recurso. Guardar una línea por cuadro lento y un resumen de los peores en el informe de la corrida. Sólo tratar como herida lo que se repite en varias corridas con la misma carga; un pico único en una corrida con variación alta del equipo queda como hipótesis. La vista mide: no cambia velocidad, orden ni calidad.
+En software por cuadros, si las métricas agregadas no localizan un tirón,
+instrumentar las etapas pertinentes del cuadro: lógica, composición,
+presentación y operaciones puntuales como lectura, decode, upload, shaders o
+glifos. Definir sus límites: una medida llamada lógica no debe incluir el
+autosave anterior ni la escritura del propio logger. Distinguir trabajo CPU,
+espera y ejecución GPU; una llamada de presentación puede bloquear.
+
+Conservar el mayor coste observado y su recurso/operación, además de los
+acumulados necesarios: el último recurso cargado no es necesariamente el más
+caro ni la causa. Un pico aislado sigue siendo evidencia que investigar;
+repetir la carga y contrastar actividad concurrente antes de atribuirlo a un
+mecanismo. No exigir repetición para conservar un fallo excepcional relevante.
+
+Acotar líneas, resumen de peores cuadros e historial. Con la sonda apagada,
+evitar lecturas de reloj, contadores, nombres y E/S de diagnóstico; comprobar
+esa ruta además de medir el overhead activo. Si hay captura/readback o logging
+que contamina la muestra, separar esa corrida de la comparación de rendimiento.
+Medir no demuestra mejora: verificar después el cambio con carga y calidad
+equivalentes, sin alterar lógica, orden o presentación para obtener cifras.

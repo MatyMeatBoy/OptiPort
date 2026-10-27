@@ -14,6 +14,23 @@ Si un rebase/merge falla, detener pruebas y pushes que dependan de esa operació
 
 Delegar sólo dentro de la autorización: pregunta acotada, contexto mínimo, restricciones, archivos/dependencias y evidencia esperada; conservar modelo/esfuerzo autorizados. Compartir resultados dentro del trabajo no autoriza comunicaciones externas, comentarios ni cierres de issues.
 
+## Investigaciones con plazo fijo
+
+Dar al worker una pregunta causal concreta y un entregable que pueda sobrevivir
+al corte: candidatos priorizados, fuente/revisión exacta, evidencia a favor y
+en contra, y mínima prueba que los falsaría. Guardar ese ledger y checkpoints
+durante la investigación; muchas lecturas sin síntesis no son un resultado.
+Registrar modelo, esfuerzo, duración autorizada y duración/terminación real.
+Reservar parte del plazo para entregar antes del hard stop, sin depender de
+que el worker alcance un mensaje final.
+
+Un defecto ajeno al síntoma no cumple el objetivo causal. Conservarlo por
+separado y seguir la cadena pertinente y su alternativa, sin terminar sólo por
+hallar una pista ni rellenar tiempo cuando ya no queda una prueba útil.
+Entregar una conclusión negativa acotada es válido: distinguir causa probada,
+hipótesis y evidencia aún necesaria, sin prometer descubrir una causa dentro
+del plazo ni presentar recuperación/observabilidad como corrección causal.
+
 ## Cierre y worktrees
 
 Al completar una tarea preguntar en el registro **¿el worktree sigue siendo necesario?** Conservarlo si está activo, en review, mantiene una reproducción o contiene artefactos necesarios. Si está integrado y verificado, preservar primero evidencia, WIP y archivos ignorados que hagan falta; después archivar el worktree mediante la herramienta gestionada o Git según el entorno. No archivar mientras otro worker o build lo usa.
