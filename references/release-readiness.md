@@ -6,6 +6,8 @@ Aplicar al preparar un build, paquete o release, ajustando profundidad al cambio
 
 Registrar por control **pass**, **fail**, **unverified** o **N/A**, con evidencia y motivo. `N/A` necesita una razón de alcance; falta de hardware es `unverified`. Un harness, un arranque o una plataforma aprobada no certifican las demás.
 
+Si hay reportes relacionados, cierres o reaperturas, contrastar la [cadena de issue a artefacto](progressive-retrieval.md#relacionar-reportes-y-entregas). Un fix integrado no demuestra que esté publicado o presente en el paquete del usuario.
+
 | Control pertinente | Evidencia esperada |
 | --- | --- |
 | Regresión del fallo | Vincular bug/issue ID, reproducción original, resultado y flujo relacionado. Derivar las plataformas afectadas del código compartido y backends: un fallo reportado en Deck también puede afectar Windows. Probar el recorrido correspondiente donde sea viable. |
