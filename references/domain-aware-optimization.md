@@ -1,6 +1,6 @@
 # Optimización según el dominio
 
-Activar cuando el usuario nombre software o un ámbito fuera del juego: ingeniería, diseño, datos, ciencia u otro. Inferir uso, formatos, algoritmos y restricciones desde el proyecto; preguntar sólo si una decisión relevante queda ambigua. Optimizar el software conservando sus resultados verificables, sin sustituir la validación profesional de un cálculo real.
+Aplicar al optimizar software de ingeniería, diseño, datos, ciencia o cualquier otro ámbito solicitado. Inferir uso, formatos, algoritmos y restricciones desde el proyecto; preguntar sólo si una decisión relevante queda ambigua. Optimizar el software conservando sus resultados verificables, sin sustituir la validación profesional de un cálculo real.
 
 ## Definir qué debe conservarse
 
@@ -23,4 +23,4 @@ Evaluar bibliotecas y rutas CPU/GPU por precisión, determinismo necesario, lím
 - **CAD lento al orbitar:** medir tessellation/render frente a recompute; bajar LOD sólo de preview si procede. Comprobar modelo, unidades y export contra referencia; no cambiar tolerancia del modelo para mejorar FPS.
 - **Editor lento al pintar:** probar preview adaptativo respetando perfil de color, capas y original. Revisar undo/redo y export final a resolución/calidad requerida; una miniatura visualmente similar no prueba fidelidad del archivo exportado.
 
-Entregar evidencia de latencia y memoria junto con equivalencia/error medido y límites. Aplicar [release readiness](release-readiness.md) según los flujos del dominio: reemplazar checks exclusivos de juegos por controles pertinentes, sin añadir una lista universal ni prometer corrección global.
+Entregar evidencia de latencia y memoria junto con equivalencia/error medido y límites. Aplicar [release readiness](release-readiness.md) según los flujos del dominio: seleccionar controles pertinentes a sus resultados, sin añadir una lista universal ni prometer corrección global.

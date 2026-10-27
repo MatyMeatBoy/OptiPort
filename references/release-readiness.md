@@ -10,9 +10,9 @@ Si hay reportes relacionados, cierres o reaperturas, contrastar la [cadena de is
 
 | Control pertinente | Evidencia esperada |
 | --- | --- |
-| Regresión del fallo | Vincular bug/issue ID, reproducción original, resultado y flujo relacionado. Derivar las plataformas afectadas del código compartido y backends: un fallo reportado en Deck también puede afectar Windows. Probar el recorrido correspondiente donde sea viable. |
-| Arquitecturas y progreso | Comparar funciones 32/64, incluido HD; probar interoperabilidad SRAM y configuración con copias. Para quicksaves, verificar compatibilidad o rechazo claro y seguro cuando no sean portables. No convertir una partida válida para un build en una promesa universal. |
-| Ciclo de vida y recursos | Según las rutas tocadas: foco, pausa/reanudación, assets HD válidos y fallidos, presupuestos, audio/vídeo, memoria y sesiones prolongadas. Observar limpieza, crecimiento y estado al volver al juego. |
+| Regresión del fallo | Vincular bug/issue ID, reproducción original, resultado y flujo relacionado. Derivar las plataformas afectadas del código compartido y backends: un fallo reportado en Linux también puede afectar Windows. Probar el recorrido correspondiente donde sea viable. |
+| Arquitecturas y progreso | Comparar funciones 32/64, incluido HD; probar interoperabilidad de documentos y configuración con copias. Para snapshots, verificar compatibilidad o rechazo claro y seguro cuando no sean portables. No convertir un documento válido para un build en una promesa universal. |
+| Ciclo de vida y recursos | Según las rutas tocadas: foco, pausa/reanudación, assets HD válidos y fallidos, presupuestos, audio/vídeo, memoria y sesiones prolongadas. Observar limpieza, crecimiento y estado al volver al software. |
 | Paquete final | Registrar SHA exacto de fuentes, configuración/toolchain y hash del artefacto. Probar instalación aislada, arranque y flujo afectado usando el paquete que se entregará, con sus bibliotecas y assets permitidos. Un ejecutable suelto no valida el archivo distribuido. |
 | Vigencia | Asociar resultados a SHA, arquitectura, opciones, assets y paquete probados. Tras cambios relevantes, repetir controles afectados; justificar evidencia previa que siga siendo aplicable. Identificar evidencia obsoleta en lugar de arrastrar un pass. |
 
@@ -20,4 +20,4 @@ Si hay reportes relacionados, cierres o reaperturas, contrastar la [cadena de is
 
 Un fallo reproducible conocido bloquea declarar lista la entrega con ese alcance. Corregirlo y repetir la regresión o reducir explícitamente el alcance de una prerelease limitada ya autorizada; no presentar el fallo como resuelto. La evidencia pendiente impide afirmar verificación de esa plataforma o función. No prometer ausencia de bugs ni «arreglado en todas las plataformas» sin evidencia correspondiente.
 
-Un fallback intencional puede conservar juego y progreso reduciendo calidad; registrar su causa y qué función/calidad se pierde. No ocultar pérdida de HD, audio, vídeo u otra función bajo una afirmación de paridad o estabilidad. Una prerelease limitada debe nombrar plataformas, arquitecturas, funciones y comprobaciones pendientes para que el usuario pueda decidir con información concreta.
+Un fallback intencional puede conservar software y progreso reduciendo calidad; registrar su causa y qué función/calidad se pierde. No ocultar pérdida de HD, audio, vídeo u otra función bajo una afirmación de paridad o estabilidad. Una prerelease limitada debe nombrar plataformas, arquitecturas, funciones y comprobaciones pendientes para que el usuario pueda decidir con información concreta.
