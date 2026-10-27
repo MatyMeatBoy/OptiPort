@@ -13,7 +13,7 @@ Convert findings into tested improvements throughout the investigation. Within t
 
 Establish protected installations, active branches, target devices, exact asset/configuration versions and known reproductions. Test in isolated copies. Keep a living work board with evidence and unresolved work. Delegate independent bounded work when authorized; preserve other agents' changes.
 
-Classify each finding before fixing it: memory/ABI correctness, unavailable resource, unbounded work, lifecycle error, or measured performance cost. A crash during a load is not evidence of OOM. Preserve logs, match addresses to the exact binary and reproduce the reported transition rather than a similar intro. Record failure before the fix and the corresponding success afterward when feasible.
+Classify the failure mechanism before fixing it, such as memory/ABI correctness, unavailable resource, unbounded work, lifecycle error or measured performance cost. A crash during a load is not evidence of OOM. Preserve logs, match addresses to the exact binary and reproduce the reported transition rather than a similar intro. Record failure before the fix and the corresponding success afterward when feasible.
 
 Ship independently reviewable blocks continuously. Run checks appropriate to the changed paths, then integrate through the authorized workflow. For test builds, record source SHA, configuration, target architecture, hashes and known limits. Include no ROMs, personal saves or private logs. Describe reporter confirmation separately from local regression success.
 
@@ -33,7 +33,7 @@ When preparing any delivery, apply [release readiness](references/release-readin
 | Frame pacing | Measure regularity as well as average FPS. Budget work across frames and reuse resources. Reduce optional quality or presentation frequency before altering emulated simulation timing. |
 | Lifecycle | Verify focus loss/resume, suspend, device reset and scene transitions. Recreate invalid resources safely and cancel stale work. Do not catch arbitrary memory corruption and resume it. |
 | Progress protection | Check existing save errors and atomic replacement. Keep validated backups/recovery separate from manual slots. Do not promise crash recovery from incompatible savestates or partial writes. |
-| Observability | Retain current log plus bounded history (five previous sessions is a useful starting point), record fallback cause without per-frame spam, and preserve logs if rotation fails. Exclude secrets and personal data. |
+| Observability | Retain current log plus history bounded for the project's needs, record fallback cause without per-frame spam, and preserve logs if rotation fails. Exclude secrets and personal data. |
 
 ## Verification and progress
 
@@ -43,6 +43,7 @@ Use this skill as a selective reference bank. Load only the module that changes 
 | --- | --- |
 | Find evidence efficiently or resume an investigation | [Progressive retrieval](references/progressive-retrieval.md) |
 | Reproduce a scene, transition or timing failure | [Reproduction harnesses](references/reproduction-harnesses.md) |
+| Locate load, frame or memory costs before optimizing | [Profiling](references/profiling.md) |
 | General coverage, devices and long sessions | [Verification layers](references/verification-layers.md) |
 | Host/game architecture and 32/64-bit migration | [Architecture migration](references/architecture-migration.md) |
 | Known resource, media, save, log or font mechanisms | [Verified lessons](references/verified-lessons.md) |
@@ -51,9 +52,7 @@ Use this skill as a selective reference bank. Load only the module that changes 
 
 Use the actual changed producer/consumer in fault-injection tests where possible: missing/corrupt/truncated/oversized input, exhausted pool, failed upload, stalled decoder, full queue and scene cancellation. Include valid resources as controls. Sanitizers and binary inspection complement device testing; neither proves every platform is fixed.
 
-For a broad pass, read [the verification layers](references/verification-layers.md). Select meaningful checks for the actual targets; do not claim all platforms are verified because one build succeeds.
-
-For fixed-layout data, HD replacement, media clocks, subprocess streaming, save transactions, localized logs or limited fonts, consult [verified lessons](references/verified-lessons.md) when relevant. Apply the mechanism to the current code; do not assume the original project's patch or numeric budget fits another engine.
+Select meaningful checks for the actual targets; do not claim all platforms are verified because one build succeeds. Apply a verified lesson's mechanism to the current code rather than assuming another project's patch or numeric budget fits this engine.
 
 Report progress as completed **work**, never a percentage of stability or bugs eliminated. Define the denominator and completion criteria in the board, keep estimates visibly provisional and record scope additions. Separate implemented, verified, pushed, integrated and confirmed on reporter device. Continue the remaining authorized work after each delivery.
 

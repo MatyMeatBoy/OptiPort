@@ -14,9 +14,9 @@ Buscar compatibilidad y beneficios medidos, sin asumir que 64 bits será más r�
 
 ## Selección y fallback
 
-Si el proyecto necesita ambas arquitecturas, Windows/Linux pueden distribuir un solo paquete con ejecutables y dependencias separados. El selector automático comprueba compatibilidad antes de iniciar; una opción avanzada puede permitir elegir 32/64 bits entre builds compatibles. Probar argumentos, rutas, guardados, logs y terminación del proceso hijo. El fallback a 32 bits debe ser una decisión segura al inicio, con motivo visible; no relanzar el juego automáticamente tras un crash durante la partida.
+Si se solicita un paquete Windows x86/x64 único, incluir ambos ejecutables con dependencias separadas y selección **Auto / Forzar 32 bits / Forzar 64 bits**; aplicar el mismo diseño en Linux cuando corresponda. El selector comprueba compatibilidad antes de iniciar y explica una selección no disponible. Auto no prioriza 64 bits sin paridad de funciones, compatibilidad de guardados y evidencia A/B. Probar argumentos, rutas, guardados, logs y terminación del proceso hijo. El fallback a 32 bits debe ser una decisión segura al inicio, con motivo visible; no relanzar el juego automáticamente tras un crash durante la partida.
 
-En Android, un APK universal sólo incluye las ABI que el proyecto puede construir y soportar. Dejar que Android seleccione según las ABI admitidas por el sistema; no fingir compatibilidad ni ofrecer un force que intente cargar código incompatible. Probar instalación, arranque y paridad por ABI en dispositivos/sistemas reales cuando estén disponibles.
+En Android, un APK universal sólo incluye las ABI que el proyecto puede construir y soportar. Android selecciona la ABI del proceso según el sistema; un selector dentro de ese proceso no puede cambiarlo a 32 bits. No fingir compatibilidad ni ofrecer un force que intente cargar código incompatible. Probar instalación, arranque y paridad por ABI en dispositivos/sistemas reales cuando estén disponibles.
 
 ## Evidencia para recomendar una arquitectura
 
