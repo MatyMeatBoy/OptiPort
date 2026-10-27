@@ -27,10 +27,21 @@ fase alcanzada. Comparar sólo variables pertinentes como `PATH`,
 y overrides SDL/Vulkan, omitiendo valores privados; no volcar todo el entorno.
 Cambiar una condición por vez y conservar el resultado anterior.
 
-Un marcador escrito antes de entrar al código del juego sólo confirma ese
-paso: distinguir proceso creado, renderer creado, entrada y primer frame.
-Al comparar 32/64 bits, comprobar además los argumentos que llega a consumir
-cada host; reenviarlos desde el shell no basta si el siguiente parser los ignora.
+Separar proceso creado, renderer creado, marcador previo a la llamada al
+juego, entrada efectiva y primera presentación. Un marcador anterior al guest
+sólo prueba que se alcanzó su escritura: no acredita ejecución del guest ni
+GPU lista. Una prueba posterior puede crear una textura y configurar blend;
+un fallo después del marcador todavía puede pertenecer al driver/renderer.
+Registrar inicio, resultado/error y fin en la frontera que discrimine esas
+hipótesis, sin convertir la última línea del log en causa demostrada.
+
+Si 32 bits funciona y 64 falla, comparar los caminos efectivos de renderer,
+fuentes, heap y assets además de ABI y argumentos consumidos; reenviarlos desde
+el shell no basta si el siguiente parser los ignora. Leer la política de retry
+del paquete exacto: si Automático debería recuperar en 32 ante un error normal
+previo a entrada, el fallo de ambos modos requiere comprobar si hubo retry,
+excepción, bloqueo o error posterior. No inferir la causa por arquitectura ni
+aplicar retroactivamente una política añadida después del release.
 
 Una `.desktop` usa reglas propias para `Exec`, incluidos escapes de cadenas,
 argumentos y porcentajes; no equivale a pegar una línea de shell ni a los campos
@@ -62,6 +73,7 @@ No se ejecutó su código ni se copió una implementación externa.
 | [Zelda64Recomp #184](https://github.com/Zelda64Recomp/Zelda64Recomp/issues/184) | El juego abría en escritorio, pero el acceso ni aparecía en Gaming Mode. La conversación apunta al registro del cliente. Es un síntoma distinto de un acceso visible que inicia y se cierra; no promover el workaround comunitario de copiar `shortcuts.vdf` a regla general. |
 | [Zelda WWHD Recomp #112](https://github.com/ZeldaWWHDRecomp/ZeldaWWHDRecomp/issues/112) | El diagnóstico con logs encontró el menú dibujado en la ventana TV mientras Gaming Mode mostraba GamePad. El reportero confirmó la corrección posterior `7aa1ec8`. Verificar destino del dibujo y foco; recibir una tecla no demuestra que la UI esté visible. |
 | [Valve steam-for-linux #7219](https://github.com/ValveSoftware/steam-for-linux/issues/7219) | Reporte histórico de 2020 sobre truncado de Target/Start In con espacios. Justifica una regresión de rutas; su cierre no prueba presencia ni ausencia de ese fallo en el cliente actual. |
+| [ReKHCoM, host publicado](https://github.com/MatyMeatBoy/ReKHCoM/blob/8c613ae5d/port/windows64/windows64_host.c#L558-L570) y [probe GPU](https://github.com/MatyMeatBoy/ReKHCoM/blob/8c613ae5d/port/ps5/shared/host_gpu_targets.h#L18-L33) | El marcador se escribe antes de llamar al guest; éste puede solicitar después una prueba real de textura/blend. Ilustra por qué entrada, capacidad gráfica y presentación requieren evidencia separada; no identifica la causa de un reporte. |
 | [Desktop Entry, `Exec`](https://specifications.freedesktop.org/desktop-entry/latest/exec-variables.html) | Especifica quoting y dos capas de escapes; `%` literal es `%%`. Validar el parser usado, no sólo la salida textual del generador. |
 | [Valve gamescope, README fijado](https://github.com/ValveSoftware/gamescope/blob/d175688ad4ec490dc7b0695c5c62f8807684a1f1/README.md) | Documenta sesiones embebidas/anidadas, Xwayland y pantalla virtual. Una ventana de escritorio o una resolución solicitada no prueban la superficie que finalmente presenta el compositor. |
 
