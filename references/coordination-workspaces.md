@@ -2,6 +2,8 @@
 
 Aplicar cuando haya trabajo paralelo autorizado o worktrees que gestionar. Reutilizar la autoridad de pendientes existente; no crear una segunda cola para repetirla. Un snapshot manual informa, pero no sustituye una cola con ownership actualizado. Roles y herramientas concretos pertenecen a la documentación del proyecto, no a una regla universal de OptiPort.
 
+Para reunir carpetas, distinguir releases de pruebas, facilitar la identificación humana y reducir uso real de disco o VM, aplicar [organización y almacenamiento](workspace-storage.md). No confundir archivar un checkout con liberar todo el tamaño que muestra una búsqueda recursiva.
+
 ## Claim, evidencia e integración
 
 Antes de editar, comprobar la autoridad y reclamar la tarea mediante su mecanismo atómico/CAS (compare-and-swap) si existe. Registrar dueño, alcance/archivos, dependencias y branch; si otro claim ganó, replanificar sin pisarlo. Sin CAS disponible, usar coordinación explícita y evitar solapamiento, sin fingir exclusión atómica. Un lock de integración serializa al integrador; no concede propiedad sobre el trabajo ajeno.

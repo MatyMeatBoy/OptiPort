@@ -42,6 +42,7 @@ When preparing any delivery, apply [release readiness](references/release-readin
 | Lifecycle | Verify focus loss/resume, suspend, device reset and scene transitions. Recreate invalid resources safely and cancel stale work. Do not catch arbitrary memory corruption and resume it. |
 | Progress protection | Check existing save errors and atomic replacement. Keep validated backups/recovery separate from manual slots. Do not promise crash recovery from incompatible snapshots or partial writes. |
 | Observability | Retain current log plus history bounded for the project's needs, record fallback cause without per-frame spam, and preserve logs if rotation fails. Exclude secrets and personal data. |
+| Workspace and storage | Keep code, releases, test evidence and shared inputs understandable to people. Measure allocated bytes without recounting links; deduplicate immutable inputs safely and size reusable VM environments from guest usage and workload peaks. See [workspace and storage](references/workspace-storage.md). |
 
 ## Verification and progress
 
@@ -55,6 +56,7 @@ Use this skill as a selective reference bank. Load only the module that changes 
 | Implement through understood engine internals or decompiled source | [Engine-informed implementation](references/engine-informed-implementation.md) |
 | Clarify controls, status, translations or responsive previews | [UX wording and localization](references/ux-localization.md) |
 | Coordinate authorized workers or finish isolated workspaces | [Coordination and workspace hygiene](references/coordination-workspaces.md) |
+| Organize folders for people, reduce disk usage or right-size VM environments | [Workspace and storage](references/workspace-storage.md) |
 | Engineering, design or another requested software domain | [Domain-aware optimization](references/domain-aware-optimization.md); optional [domain sources](references/domain-sources.md) |
 | Find evidence efficiently or resume an investigation | [Progressive retrieval](references/progressive-retrieval.md) |
 | Reproduce a scene, transition or timing failure | [Reproduction harnesses](references/reproduction-harnesses.md) |

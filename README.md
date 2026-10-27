@@ -28,6 +28,7 @@ Pídele:
 - Audio, vídeo, texturas, colas acotadas y trabajo sin progreso.
 - Suspensión, reanudación, limpieza de recursos y protección del guardado.
 - Logs rotativos, regresiones, pruebas prolongadas y builds verificables.
+- Organización del proyecto comprensible para personas, worktrees reunidos, releases y pruebas identificables, almacenamiento sin duplicaciones innecesarias y VM dimensionadas según su trabajo real. La [guía de organización y almacenamiento](references/workspace-storage.md) incluye ayudas visuales opcionales para carpetas y controles propios de ingeniería.
 
 Sirve como método para cualquier plataforma; las pruebas disponibles dependen del proyecto, herramientas y dispositivos. No promete arreglar todos los fallos ni inventa porcentajes de mejora. Publicar releases o enviar builds requiere autorización.
 
