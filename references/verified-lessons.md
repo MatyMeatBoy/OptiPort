@@ -16,3 +16,5 @@ Promover mecanismos comprobados; mantener tickets y resultados transitorios fuer
 | Avisos traducidos con fuente limitada | Texto Unicode válido puede usar glifos que la fuente del juego no incluye. Un aviso JP de guardado incorporaba `維`; `check_jp_glyphs.py` lo detectó y una alternativa en kana pasó el control. Validar textos nuevos contra el repertorio real y revisar el aviso dibujado; el control de glifos por sí solo no prueba legibilidad ni traducción. |
 
 Al añadir una lección: aportar trigger, mecanismo, prueba antes/después y límites; comprobar que no impone a todos los ports un detalle propio de un juego o plataforma.
+
+Al usar estas lecciones en una entrega, aplicar [preparación de release](release-readiness.md): la corrección y su harness son evidencia del mecanismo, mientras el paquete, flujo relacionado y plataformas afectadas requieren sus propias comprobaciones vigentes.

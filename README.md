@@ -27,6 +27,8 @@ Sirve como método para cualquier plataforma; las pruebas disponibles dependen d
 
 [Instrucciones para la IA](SKILL.md) · [Capas de verificación](references/verification-layers.md)
 
+Cada entrega aplica [controles de regresión y preparación](references/release-readiness.md): evidencia del paquete exacto, fallos conocidos y límites por plataforma. La IA elige las comprobaciones pertinentes y explica lo pendiente sin convertirlas en tareas técnicas para quien usa la skill.
+
 Para migraciones, consulta la [guía de arquitectura](references/architecture-migration.md). El objetivo puede ser un paquete Windows o Linux con ambos ejecutables y selección compatible; en Android, un APK con las ABI realmente soportadas. La disponibilidad depende del código, toolchains y pruebas de cada proyecto.
 
 Irá creciendo con aprendizajes comprobados. Para proponer uno, aporta el fallo, reproducción o evidencia, solución y límites; evita subir ROMs, assets comerciales, partidas o datos privados.

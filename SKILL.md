@@ -17,6 +17,8 @@ Classify each finding before fixing it: memory/ABI correctness, unavailable reso
 
 Ship independently reviewable blocks continuously. Run checks appropriate to the changed paths, then integrate through the authorized workflow. For test builds, record source SHA, configuration, target architecture, hashes and known limits. Include no ROMs, personal saves or private logs. Describe reporter confirmation separately from local regression success.
 
+When preparing any delivery, apply [release readiness](references/release-readiness.md) to that delivery's scope. This is a required evidence check, not an additional permission request. Treat a reproducible failure in the promised scope as blocking; distinguish an explicitly limited prerelease from a verified fix.
+
 ## Areas to cover
 
 | Area | Decisions and evidence |
