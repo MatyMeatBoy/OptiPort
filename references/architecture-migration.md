@@ -27,3 +27,9 @@ Comparar A/B con el mismo escenario, assets, opciones, backend y calidad: carga 
 Compilar con el SDK y los guards reales de cada frontend afectado. Un escáner textual de constantes o un harness del motor puede pasar mientras una UI compartida invoca una función disponible sólo en escritorio. Mantener funciones de extracción/reparación separadas de receptores móviles y probar el punto común que las llama; no inventar respuestas de éxito para ocultar una API ausente.
 
 Registrar por separado compilación, probes de ABI, harness, arranque del paquete y recorrido real del software. Un probe SysV aprobado no certifica Microsoft x64 ni una aplicación completa. Mantener pendientes explícitos de QA, hardware y sesiones prolongadas; publicar una alpha sólo dentro de la autorización del usuario, con SHA, hashes y límites comprobados.
+
+Si una arquitectura inicia y otra falla, aplicar también las fases de
+[diagnóstico de arranque](linux-launch-context.md): proceso, marcador,
+inicialización gráfica y primer resultado no son el mismo hito. El razonamiento
+por fases sirve a ambos runtimes; los detalles de Linux/Steam sólo corresponden
+a esas plataformas. No atribuir el fallo a ABI o CPU por el nombre de la build.
