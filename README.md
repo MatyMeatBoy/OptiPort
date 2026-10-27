@@ -15,6 +15,7 @@ Pídele:
 ## Qué revisa
 
 - Memoria, alineación y compatibilidad entre arquitecturas.
+- Migración de 32 a 64 bits con compatibilidad de datos, partidas y funciones; comparar antes de recomendarla, porque 64 bits no garantiza más velocidad.
 - Fallbacks que conservan el juego original cuando falla un recurso opcional.
 - Tiempos de carga, memoria y regularidad de cuadros mediante profiling.
 - Cachés, presupuestos, carga asíncrona, precarga y streaming.
@@ -25,6 +26,8 @@ Pídele:
 Sirve como método para cualquier plataforma; las pruebas disponibles dependen del proyecto, herramientas y dispositivos. No promete arreglar todos los fallos ni inventa porcentajes de mejora. Publicar releases o enviar builds requiere autorización.
 
 [Instrucciones para la IA](SKILL.md) · [Capas de verificación](references/verification-layers.md)
+
+Para migraciones, consulta la [guía de arquitectura](references/architecture-migration.md). El objetivo puede ser un paquete Windows o Linux con ambos ejecutables y selección compatible; en Android, un APK con las ABI realmente soportadas. La disponibilidad depende del código, toolchains y pruebas de cada proyecto.
 
 Irá creciendo con aprendizajes comprobados. Para proponer uno, aporta el fallo, reproducción o evidencia, solución y límites; evita subir ROMs, assets comerciales, partidas o datos privados.
 

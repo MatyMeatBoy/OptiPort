@@ -1,6 +1,6 @@
 ---
 name: optiport
-description: Use when the user invokes OptiPort or requests systematic stability and performance improvements for a recompilation, decompilation or source port, especially with optional assets or constrained devices.
+description: Use when the user invokes OptiPort or requests systematic stability, performance or 32-to-64-bit migration work for a recompilation, decompilation or source port, especially with optional assets or constrained devices.
 ---
 
 # OptiPort
@@ -22,6 +22,7 @@ Ship independently reviewable blocks continuously. Run checks appropriate to the
 | Area | Decisions and evidence |
 | --- | --- |
 | Portability | Respect original data alignment, integer widths, endian and emulated hardware semantics. Do not assume native ABI alignment for fixed cartridge or disc data. Upgrade cached generated glue as well as clean builds. |
+| 32/64-bit migration | Separate host architecture from game data/address widths. Audit ABI boundaries and dependencies, retain a compatible 32-bit path when needed, and measure feature-equivalent builds before recommending 64-bit. See [migration guidance](references/architecture-migration.md). |
 | Safe fallback | Check allocation, decoder, texture/upload and audio queue results. Only suppress original rendering/audio after the replacement is usable. Existence of a file is insufficient. Preserve story, input and logic speed. |
 | Profiling | Compare identical deterministic baseline/HD workloads, cold and warm. Record load latency, frame p50/p95/p99, stalls and peak memory. Distinguish process RSS/private from VRAM and software rendering from device GPU. |
 | Resource budgets | Validate metadata before decoding; account for overlapping buffers, CPU copies and texture pairs. Bound caches and evict only inactive resources. Check partial failures and release ownership exactly once. |
