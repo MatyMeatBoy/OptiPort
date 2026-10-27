@@ -41,6 +41,7 @@ Use this skill as a selective reference bank. Load only the module that changes 
 
 | Need | Read when relevant |
 | --- | --- |
+| Clarify controls, status, translations or responsive previews | [UX wording and localization](references/ux-localization.md) |
 | Coordinate authorized workers or finish isolated workspaces | [Coordination and workspace hygiene](references/coordination-workspaces.md) |
 | Engineering, design or another requested software domain | [Domain-aware optimization](references/domain-aware-optimization.md); optional [domain sources](references/domain-sources.md) |
 | Find evidence efficiently or resume an investigation | [Progressive retrieval](references/progressive-retrieval.md) |
