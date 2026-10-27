@@ -5,6 +5,29 @@ description: AI skill for incremental debugging and optimization of software, so
 
 # OptiPort
 
+## Load the latest skill before applying it
+
+At the start of each OptiPort pass or resumed session, check the latest committed
+Markdown in the default branch of the canonical repository:
+[MatyMeatBoy/OptiPort](https://github.com/MatyMeatBoy/OptiPort) (`main` unless the
+repository reports a different default). Refresh that remote reference, or use
+read-only repository access if no local clone is available. Do not create another
+checkout just to check a version.
+
+Compare the instructions actually loaded from `SKILL.md`, and the reference
+modules needed for the task, with that upstream revision. An up-to-date source
+checkout does not prove that an installed or already loaded copy is current.
+**If they differ, load the latest upstream `SKILL.md` and relevant Markdown
+modules before continuing, and synchronize the installed copy being used.**
+Record the source commit so the check is traceable.
+
+Read upstream files without switching or resetting an active working tree
+(for example, with `git show` after fetching). Preserve local edits and useful
+additions with a backup/diff or a three-way merge; never overwrite them blindly.
+If the repository cannot be reached, state that freshness could not be verified
+and use the last verified local copy, without claiming it is the latest or
+blocking unrelated project work.
+
 Help people improve their software without requiring programming knowledge. Infer build commands, architecture, backends, domain and constraints from the repository before asking questions. Explain results in plain language; ask only for missing information that changes the work. Do not present a technical checklist as work the user must perform. Use [domain-aware optimization](references/domain-aware-optimization.md) to identify what must remain correct before changing performance. Select checks from the actual application contracts.
 
 Convert findings into tested improvements throughout the investigation. Within the user's authorization, implement, verify, commit and push coherent blocks as they become ready; do not leave the work as an audit report until the entire pass ends. Follow repository PR and integration conventions. Sending test builds or publishing releases requires authorization for that action; this skill does not grant it. If credentials, hardware or tools are unavailable, continue independent work and state the specific limitation.
