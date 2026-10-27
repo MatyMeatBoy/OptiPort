@@ -11,6 +11,7 @@ Buscar compatibilidad y beneficios medidos, sin asumir que 64 bits será más r�
 | Archivos y documentos | Mantener anchos, endian, layout y versiones de formatos legacy. Probar lectura y escritura cruzadas entre builds con copias de documentos; verificar también cachés y código generado existente. |
 | ABI y callbacks | Auditar Microsoft x64 frente a SysV AMD64 donde corresponda: argumentos enteros/flotantes, retorno, alineación de stack, shadow space/red zone y registros no volátiles. Probar wrappers, trampolines y callbacks con tipos reales, incluidos floats; una llamada de enteros que pasa no valida toda la frontera. |
 | Dependencias | Ejecutable, DLL/shared libraries y plugins de cada proceso deben tener arquitectura y ABI coherentes. Revisar disponibilidad de decoders, renderer, audio y funciones HD, además del enlace correcto. |
+| Instrucciones de CPU | Revisar los flags efectivos del host y del código generado/guest, por ejemplo SSE4.1 o AVX. Identificar x64 no demuestra esas extensiones: contrastar capacidades del equipo antes de ejecutar una ruta que las exige, y probar también la selección cuando faltan. Un cierre por instrucción ilegal es una hipótesis hasta disponer de excepción y binario exactos. |
 | Rutas efectivas | Revisar preprocesado, flags y capacidades negociadas: una función puede compilar en el build de 32 bits y desaparecer en un guest freestanding de 64 bits. Registrar el renderer real, calidad efectiva y motivo de fallback; un nombre fijo de backend o una compilación exitosa no demuestran paridad. |
 
 ## Selección y fallback
