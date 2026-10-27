@@ -2,7 +2,7 @@
 
 Aplicar cuando el producto soporte distintos mandos/teclado o necesite adaptar tutoriales. Separar tres contratos: **acción semántica** (confirmar, cancelar, saltar), **binding físico efectivo** y **texto/glifo mostrado**. Cambiar el dibujo de un botón no debe cambiar silenciosamente la acción ni afirmar un binding inexistente.
 
-Si encaja con el producto, ofrecer **Auto**, original/GBA, Nintendo, Xbox, PlayStation y teclado, con override explícito. Distinguir selección de familia visual y selección/rebinding de controles. Nintendo A y PlayStation círculo pueden ser convenciones seleccionables de confirmación; no asumir que lo sean en todas las regiones, juegos o preferencias. Respetar confirmación/cancelación regional y rebinding del usuario.
+Si encaja con el producto, ofrecer **Auto**, teclado, ratón, táctil y dispositivos especializados, con override explícito. Distinguir selección de familia visual y selección/rebinding de controles. Botones primarios de distintos dispositivos pueden representar convenciones seleccionables de confirmación; no asumir que lo sean en todas las regiones, aplicaciones o preferencias. Respetar confirmación/cancelación regional y rebinding del usuario.
 
 Resolver tokens de tutorial/ayuda desde la acción y el mapping efectivo, con su convención seleccionada: un tutorial de confirmar debe mostrar el botón que realmente confirma. Si el texto original embebe nombres de botones, integrar su resolución en el punto apropiado del motor sin reemplazos globales ambiguos. Mantener nombres, glifos y acción coherentes también en menús, errores y accesibilidad.
 

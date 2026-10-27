@@ -1,6 +1,6 @@
 # Fuentes opcionales para ingeniería y diseño
 
-Catálogo de software separado del [catálogo de juegos y ports](source-catalog.md): cargar sólo según el contexto, salvo un mecanismo compartido explícitamente pertinente. Candidatos con presencia destacada en GitHub; estrellas consultadas el 2026-10-27: OCCT 3.072, FreeCAD 34.826, Blender 21.316 y Krita 10.640. Es una señal de descubrimiento, no prueba de calidad.
+Catálogo opcional de fuentes técnicas: cargar sólo el archivo pertinente al problema actual. Ver también el [índice por mecanismo](source-catalog.md). Candidatos con presencia destacada en GitHub; estrellas consultadas el 2026-10-27: OCCT 3.072, FreeCAD 34.826, Blender 21.316 y Krita 10.640. Es una señal de descubrimiento, no prueba de calidad.
 
 Lectura acotada de archivos primarios en esa fecha; commits fijados. Se inspeccionaron las declaraciones/comentarios pertinentes, sin clonar ni ejecutar código. No es auditoría de todo el proyecto: validar adaptación y revisar licencia/avisos de lo reutilizado. MIT de OptiPort no relicencia estas fuentes.
 
