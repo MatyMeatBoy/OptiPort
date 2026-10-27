@@ -25,3 +25,6 @@ Reproducir el fallo en el producer/consumer real y fijar una aserción que disti
 Ejemplo de decisión: un recurso HD que falla el primer upload y deja un hueco requiere comprobar el punto donde se omite el dibujo original y condicionar esa omisión a readiness. Reproducir decode/upload fallido y recurso válido es más útil que rediseñar de entrada todo el grafo de recursos. Extender el cambio sólo si la evidencia muestra otro contrato roto.
 
 Consultar el [catálogo de software](source-catalog.md) si aporta un mecanismo que falta; consultar sólo las fuentes pertinentes al patrón.
+
+Si el producto adapta la presentación de un remake/remaster, verificar las [equivalencias de datos y representación](remaster-equivalence.md), especialmente capacidad, interpolación y grupos animados; compartir assets no demuestra compartir reglas.
+
