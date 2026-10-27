@@ -41,6 +41,7 @@ Use this skill as a selective reference bank. Load only the module that changes 
 
 | Need | Read when relevant |
 | --- | --- |
+| Adapt optional work to weaker hardware without penalizing stronger devices | [Adaptive performance](references/adaptive-performance.md) |
 | Implement through understood engine internals or decompiled source | [Engine-informed implementation](references/engine-informed-implementation.md) |
 | Clarify controls, status, translations or responsive previews | [UX wording and localization](references/ux-localization.md) |
 | Coordinate authorized workers or finish isolated workspaces | [Coordination and workspace hygiene](references/coordination-workspaces.md) |
