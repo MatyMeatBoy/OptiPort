@@ -37,6 +37,18 @@ When preparing any delivery, apply [release readiness](references/release-readin
 
 ## Verification and progress
 
+Use this skill as a selective reference bank. Load only the module that changes the next decision; the workflow remains usable offline. External repository research is optional, not a prerequisite for fixes the current code already explains.
+
+| Need | Read when relevant |
+| --- | --- |
+| Find evidence efficiently or resume an investigation | [Progressive retrieval](references/progressive-retrieval.md) |
+| Reproduce a scene, transition or timing failure | [Reproduction harnesses](references/reproduction-harnesses.md) |
+| General coverage, devices and long sessions | [Verification layers](references/verification-layers.md) |
+| Host/game architecture and 32/64-bit migration | [Architecture migration](references/architecture-migration.md) |
+| Known resource, media, save, log or font mechanisms | [Verified lessons](references/verified-lessons.md) |
+| Find and adapt useful patterns from other projects (“Voltron de repos”) | [Repository research](references/repository-research.md); optional [source catalog](references/source-catalog.md) |
+| Prepare a delivery | [Release readiness](references/release-readiness.md), required for that delivery |
+
 Use the actual changed producer/consumer in fault-injection tests where possible: missing/corrupt/truncated/oversized input, exhausted pool, failed upload, stalled decoder, full queue and scene cancellation. Include valid resources as controls. Sanitizers and binary inspection complement device testing; neither proves every platform is fixed.
 
 For a broad pass, read [the verification layers](references/verification-layers.md). Select meaningful checks for the actual targets; do not claim all platforms are verified because one build succeeds.
