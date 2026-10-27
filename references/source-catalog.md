@@ -1,5 +1,7 @@
 # Fuentes opcionales por área
 
+Catálogo para juegos/ports. Para ingeniería y diseño usar el [catálogo de software](domain-sources.md) sólo si ese es el contexto o hay un mecanismo compartido pertinente; no cargar ambos por defecto.
+
 Lectura puntual de fuentes primarias el 2026-10-27; no ranking ni certificación. Commits fijados para reproducir la lectura. Revisar cambios, pruebas y licencia del archivo antes de reutilizar código. No se ejecutó código de estos proyectos.
 
 | Proyecto y archivo leído | Patrón que merece investigar | Límites y licencia observada |

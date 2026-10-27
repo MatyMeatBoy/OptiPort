@@ -2,6 +2,8 @@
 
 Una skill para que una IA **depure y optimice recompilaciones, decompilaciones y source ports**, aunque quien la use no sepa mucho de programación.
 
+También se adapta a software de ingeniería y diseño cuando lo pidas, conservando precisión, modelos, edición y fidelidad de exportación según el dominio.
+
 No se queda en un informe: investiga, implementa mejoras, las prueba y sube bloques revisables cuando está autorizado. Explica qué cambió, qué se midió y qué falta comprobar.
 
 ## Uso

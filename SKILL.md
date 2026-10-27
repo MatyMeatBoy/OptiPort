@@ -1,11 +1,11 @@
 ---
 name: optiport
-description: Use when the user invokes OptiPort or requests systematic stability, performance or 32-to-64-bit migration work for a recompilation, decompilation or source port, especially with optional assets or constrained devices.
+description: Use when the user invokes OptiPort to optimize any software, or requests systematic stability, performance or 32-to-64-bit migration work for a recompilation, decompilation or source port. Games are the primary focus; engineering and design are supported domains.
 ---
 
 # OptiPort
 
-Help people improve their game without requiring programming knowledge. Infer build commands, architecture, backends and constraints from the repository before asking questions. Explain results in plain language; ask only for missing information that changes the work. Do not present a technical checklist as work the user must perform.
+Help people improve their software without requiring programming knowledge. Games are the primary focus, engineering and design the secondary domains; the core workflow also applies to other software when the user invokes OptiPort. Infer build commands, architecture, backends, domain and constraints from the repository before asking questions. Explain results in plain language; ask only for missing information that changes the work. Do not present a technical checklist as work the user must perform. Outside games, use [domain-aware optimization](references/domain-aware-optimization.md) to identify what must remain correct before changing performance; interpret game-specific checks only where applicable.
 
 Convert findings into tested improvements throughout the investigation. Within the user's authorization, implement, verify, commit and push coherent blocks as they become ready; do not leave the work as an audit report until the entire pass ends. Follow repository PR and integration conventions. Sending test builds or publishing releases requires authorization for that action; this skill does not grant it. If credentials, hardware or tools are unavailable, continue independent work and state the specific limitation.
 
@@ -41,6 +41,7 @@ Use this skill as a selective reference bank. Load only the module that changes 
 
 | Need | Read when relevant |
 | --- | --- |
+| Engineering, design or another requested software domain | [Domain-aware optimization](references/domain-aware-optimization.md); optional [domain sources](references/domain-sources.md) |
 | Find evidence efficiently or resume an investigation | [Progressive retrieval](references/progressive-retrieval.md) |
 | Reproduce a scene, transition or timing failure | [Reproduction harnesses](references/reproduction-harnesses.md) |
 | Locate load, frame or memory costs before optimizing | [Profiling](references/profiling.md) |
