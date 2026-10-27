@@ -38,7 +38,7 @@ Use the actual changed producer/consumer in fault-injection tests where possible
 
 For a broad pass, read [the verification layers](references/verification-layers.md). Select meaningful checks for the actual targets; do not claim all platforms are verified because one build succeeds.
 
-For fixed-layout data, HD replacement, media clocks, subprocess streaming or save transactions, consult [verified lessons](references/verified-lessons.md) when relevant. Apply the mechanism to the current code; do not assume the original project's patch or numeric budget fits another engine.
+For fixed-layout data, HD replacement, media clocks, subprocess streaming, save transactions, localized logs or limited fonts, consult [verified lessons](references/verified-lessons.md) when relevant. Apply the mechanism to the current code; do not assume the original project's patch or numeric budget fits another engine.
 
 Report progress as completed **work**, never a percentage of stability or bugs eliminated. Define the denominator and completion criteria in the board, keep estimates visibly provisional and record scope additions. Separate implemented, verified, pushed, integrated and confirmed on reporter device. Continue the remaining authorized work after each delivery.
 

@@ -27,3 +27,13 @@ Sirve como método para cualquier plataforma; las pruebas disponibles dependen d
 [Instrucciones para la IA](SKILL.md) · [Capas de verificación](references/verification-layers.md)
 
 Irá creciendo con aprendizajes comprobados. Para proponer uno, aporta el fallo, reproducción o evidencia, solución y límites; evita subir ROMs, assets comerciales, partidas o datos privados.
+
+## Próximos aprendizajes
+
+Pendientes del método: incorporar ejemplos reproducibles de pruebas prolongadas, matrices de dispositivos y cancelación de resultados de una escena anterior al reiniciar recursos. Cada ejemplo deberá indicar qué probó el harness y qué se ejecutó en un dispositivo real.
+
+Estos pendientes no certifican resultados de ningún juego. Los recorridos prolongados, la matriz de hardware y los resets reales de dispositivo siguen requiriendo evidencia propia de cada port; sus tickets y resultados se mantienen en el proyecto correspondiente.
+
+## Licencia
+
+El material original de esta skill se publica bajo [MIT](LICENSE). Esta licencia no concede derechos sobre código, ROMs, fuentes, assets ni otros materiales de los juegos analizados.
