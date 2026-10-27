@@ -19,6 +19,8 @@ For each application, use [the general-software protocol](references/software-ge
 
 Establish protected installations, active branches, target devices, exact asset/configuration versions and known reproductions. Test in isolated copies. Keep a living work board with evidence and unresolved work. Delegate independent bounded work when authorized; preserve other agents' changes.
 
+Prioritize reported crashes, progress/data corruption and blockers before optimization or polish, weighing severity, reproducibility and affected users. A confirmed root cause can expose a shared defect: derive focused sibling checks from that mechanism and preserve a reusable lesson when verified. Bound the investigation by evidence, resources and physical constraints; do not chase every possible bug or let cosmetic work displace critical failures.
+
 Classify the failure mechanism before fixing it, such as memory/ABI correctness, unavailable resource, unbounded work, lifecycle error or measured performance cost. A crash during a load is not evidence of OOM. Preserve logs, match addresses to the exact binary and reproduce the reported transition rather than a similar opening screen. Record failure before the fix and the corresponding success afterward when feasible.
 
 Ship independently reviewable blocks continuously. Run checks appropriate to the changed paths, then integrate through the authorized workflow. For test builds, record source SHA, configuration, target architecture, hashes and known limits. Include no proprietary inputs, personal documents or private logs. Describe reporter confirmation separately from local regression success.
