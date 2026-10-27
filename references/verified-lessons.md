@@ -1,0 +1,16 @@
+# Lecciones verificadas
+
+Promover mecanismos comprobados; mantener tickets y resultados transitorios fuera de la skill. Un harness comprueba su contrato, no todo el hardware. Estas primeras lecciones provienen del repaso ReKHCoM de octubre de 2026.
+
+| Situación | Lección y comprobación útil |
+| --- | --- |
+| Datos ROM/disco fijados por dirección | El ABI puede sobreestimar la alineación de arrays externos. Anotar la alineación real, inspeccionar el binario y actualizar cabeceras de builds cacheados; un clean build aislado no prueba ese upgrade. [Caso](https://github.com/MatyMeatBoy/ReKHCoM/pull/286). |
+| Reemplazo HD | Archivo existente no significa recurso listo. Probar fallo del primer decode/upload y comprobar que el consumidor conserva el dibujo original. Adquirir y fijar la textura antes de omitirlo. [Sprites](https://github.com/MatyMeatBoy/ReKHCoM/pull/284), [HUD](https://github.com/MatyMeatBoy/ReKHCoM/pull/287). |
+| Suavizado a alta resolución | La memoria crece con el área y todos los niveles de la cadena. Presupuestar la cadena completa, no sólo el target mayor; liberar la anterior antes de cambiar tamaño y reutilizar la calidad reducida que sí funciona. [Caso](https://github.com/MatyMeatBoy/ReKHCoM/pull/296). |
+| Streaming sin progreso | Separar agotamiento del presupuesto por cuadro de fallo del decoder. Un loop corto válido puede requerir muchos bloques: aceptar PCM parcial y continuar después; un seek fallido o cero progreso persistente debe terminar los reintentos. [Feed](https://github.com/MatyMeatBoy/ReKHCoM/pull/288), [host](https://github.com/MatyMeatBoy/ReKHCoM/pull/291). |
+| Reloj de vídeo | Un objeto de audio abierto puede haber llegado a EOF. Al agotarse PCM, pasar a un reloj activo con continuidad; probar vídeo sin audio y audio más corto que vídeo. [Caso](https://github.com/MatyMeatBoy/ReKHCoM/pull/293). |
+| Cancelación de vídeo | “Saltado por el usuario”, “cerrar aplicación” y “falló el recurso” son resultados distintos. Saltar antes del primer frame no debe iniciar el fallback que se quería saltar. Una pausa en background no demuestra decoder bloqueado. [Caso](https://github.com/MatyMeatBoy/ReKHCoM/pull/289). |
+| Procesos con pipes | Evitar lecturas/cierre bloqueantes en el hilo de eventos; conservar PID propio y recoger sólo ese hijo. Probar también stdio cerrado: un pipe puede ocupar 0/1/2 y las acciones de dup/close pueden cerrar su propia salida. [Caso](https://github.com/MatyMeatBoy/ReKHCoM/pull/293). |
+| Cambio de banco/slot | Escribir temporal y renombrar no basta si el caller ignora el fallo y sustituye el estado dirty. El cambio completo es una transacción: conservar memoria, banco y UI si no se pudo persistir el anterior. [Caso](https://github.com/MatyMeatBoy/ReKHCoM/pull/290). |
+
+Al añadir una lección: aportar trigger, mecanismo, prueba antes/después y límites; comprobar que no impone a todos los ports un detalle propio de un juego o plataforma.
