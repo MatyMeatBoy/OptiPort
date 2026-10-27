@@ -1,5 +1,7 @@
 # OptiPort
 
+**AI skill for incremental debugging and optimization of software, source ports, recompilations, decompilations.**
+
 Una skill para **mejorar la estabilidad y el rendimiento del software** con evidencia reproducible, aunque quien la use no programe.
 
 Se aplica a aplicaciones web, escritorio, ingeniería, diseño y procesamiento de datos. Conserva precisión, modelos, edición y fidelidad de exportación según el dominio.

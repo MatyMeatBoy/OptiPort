@@ -1,6 +1,6 @@
 ---
 name: optiport
-description: Use when the user invokes OptiPort to optimize any software, or requests systematic stability, performance or 32-to-64-bit migration work for a recompilation, decompilation or source port. The method applies to engineering, design, web, desktop, data processing and other software.
+description: AI skill for incremental debugging and optimization of software, source ports, recompilations, decompilations. Use when the user invokes OptiPort to optimize any software, or requests systematic stability, performance or 32-to-64-bit migration work for a recompilation, decompilation or source port. The method applies to engineering, design, web, desktop, data processing and other software.
 ---
 
 # OptiPort
