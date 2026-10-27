@@ -2,6 +2,8 @@
 
 Aplicar al preparar un build, paquete o release, ajustando profundidad al cambio y al alcance anunciado. Reutilizar el board y las pruebas existentes; no crear burocracia ni pedir permisos adicionales por esta guía. La autorización de publicación sigue siendo la que dio el usuario.
 
+Elegir escenarios breves y automatizables por patrón de riesgo: transición, acceso límite, recurso fallido, cambio de arquitectura o recuperación de estado. No exigir una partida completa de principio a fin como gate universal. Reservar sesiones prolongadas para riesgos de acumulación y declarar por separado lo que no se cubrió.
+
 ## Evidencia mínima para decidir
 
 Registrar por control **pass**, **fail**, **unverified** o **N/A**, con evidencia y motivo. `N/A` necesita una razón de alcance; falta de hardware es `unverified`. Un harness, un arranque o una plataforma aprobada no certifican las demás.
