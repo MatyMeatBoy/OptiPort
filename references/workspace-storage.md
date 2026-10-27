@@ -17,6 +17,12 @@ Reutilizar las convenciones existentes y acordadas del proyecto. Mantener un map
 
 Un acceso directo puede facilitar la entrada al proyecto sin duplicar sus datos. En Windows se pueden distinguir carpetas mediante iconos existentes y `desktop.ini`: usar `[.ShellClassInfo]` e `IconResource` con un recurso estable, conservar otros ajustes, marcar el INI como oculto/sistema y la carpeta como personalizada mediante su atributo de sólo lectura. Comprobar el resultado en Explorer. Mantener nombres y un mapa textual: el icono es una ayuda opcional, no la única identificación. Evitar rutas a iconos dentro de un worktree temporal y no convertir la personalización visual en dependencia de ejecución.
 
+### Evidencia actual e histórica
+
+Mantener un índice de fixtures/capturas con binario y fuentes, generación del importador/recetas y contenido, arquitectura/región/opciones, propósito, hashes y estado actual o heredado. Al sustituir una familia de recursos o su productor, conservar la evidencia anterior y marcar su alcance histórico y la referencia que la sustituye; archivar no implica borrar ni hacer pasar una captura antigua por el resultado nuevo.
+
+Reutilizar un resultado anterior sólo cuando sus condiciones y cobertura sigan siendo equivalentes, con esa justificación registrada. Una carpeta llamada `latest`, un binario recién compilado o una fecha de copia reciente no actualizan los assets de un fixture. Antes de reutilizar una importación, aplicar la [verificación de contenido y calidad efectiva](release-readiness.md#código-contenido-importado-y-calidad-efectiva). Conservar los paquetes ya entregados y sus hashes fuera de staging mutable; las notas o validaciones posteriores llevan su propia identidad.
+
 ## Medir antes de limpiar
 
 Registrar las raíces autorizadas de cada volumen, consumidores activos y áreas protegidas. Separar **tamaño lógico**, **espacio realmente asignado**, **archivos únicos** y **espacio recuperable**. La suma mostrada por una búsqueda recursiva no prueba cuánto disco se liberará.
