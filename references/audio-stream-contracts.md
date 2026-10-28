@@ -21,8 +21,10 @@ un volumen correcto o una cola positiva no lo hacen.
 
 En un puente con varios hosts, negociar capacidades de pausa/reanudación y las
 unidades de la cola por separado de una notificación de frecuencia de entrada.
-Un comando opcional nuevo puede servir a un host antiguo de anillo sin cambiar
-sus unidades. Conservar comandos existentes y comprobar qué devuelve el host
+Un comando opcional nuevo puede servir a un host que conserva un backend de
+anillo sin cambiar sus unidades. Un binario antiguo puede ignorarlo: la mejora
+requiere un host y guest que implementen ese contrato. Conservar comandos
+existentes y comprobar qué devuelve el host
 ante una operación desconocida; actualizar también listas de staging de headers.
 Probar hosts y guests nuevos/antiguos sin asumir que comparten capacidades.
 
@@ -37,7 +39,9 @@ Si un consumidor necesita entregar PCM mientras el productor se retrasa, una
 rampa breve y acotada desde la última muestra hacia silencio, seguida de una
 entrada progresiva al recuperar PCM, puede evitar discontinuidades bruscas.
 Dimensionar duración y scratch por frecuencia/formato; acotar el trabajo ante
-peticiones grandes. Mantener I/O, asignaciones y decodificación fuera del callback.
+peticiones grandes. No añadir I/O, decodificación, trabajo del juego ni
+asignaciones propias al callback; documentar si la API de encolado puede asignar
+internamente en vez de afirmar que toda la ruta está libre de asignaciones.
 La recuperación sintetiza salida: no repite un paquete antiguo ni avanza el
 reloj, decoder o estado autoritativo para simular que llegó contenido nuevo.
 Si la entrega al consumidor falla, descartar una cola de recuperación obsoleta.
