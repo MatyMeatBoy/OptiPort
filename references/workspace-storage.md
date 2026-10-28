@@ -23,6 +23,8 @@ Mantener un índice de fixtures/capturas con binario y fuentes, generación del 
 
 Reutilizar un resultado anterior sólo cuando sus condiciones y cobertura sigan siendo equivalentes, con esa justificación registrada. Una carpeta llamada `latest`, un binario recién compilado o una fecha de copia reciente no actualizan los assets de un fixture. Antes de reutilizar una importación, aplicar la [verificación de contenido y calidad efectiva](release-readiness.md#código-contenido-importado-y-calidad-efectiva). Conservar los paquetes ya entregados y sus hashes fuera de staging mutable; las notas o validaciones posteriores llevan su propia identidad.
 
+Conservar los auxiliares prometidos fuera de la limpieza del builder y verificar su ruta y hash retenidos después del cleanup. Haber descargado o calculado el hash de un archivo debug no prueba que siga disponible. Si se perdió, registrar ese límite y buscar una copia exacta; no afirmar retención a partir del log ni regenerar/sustituir una entrega final para ocultar el auxiliar faltante.
+
 ## Medir antes de limpiar
 
 Registrar las raíces autorizadas de cada volumen, consumidores activos y áreas protegidas. Separar **tamaño lógico**, **espacio realmente asignado**, **archivos únicos** y **espacio recuperable**. La suma mostrada por una búsqueda recursiva no prueba cuánto disco se liberará.
