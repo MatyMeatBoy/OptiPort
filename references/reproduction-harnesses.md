@@ -12,4 +12,18 @@ Comprobar qué subsistema posee cada indicador antes de interpretar una discrepa
 
 Comparar el control negativo que exhibe el fallo con el positivo corregido, manteniendo escenario y condiciones. Para fallos inyectados, incluir también recurso válido y verificar el consumidor real, limpieza, límites de trabajo y fallback. Si el negativo no falla, el ensayo no demuestra esa corrección. Registrar repeticiones y resultados sin extrapolar a otras regiones, builds o dispositivos.
 
+En pruebas de audio, exigir muestras de productor no nulas y la pista activa
+prevista antes de evaluar una interrupción. Registrar recuperaciones además de
+la cola: llenar con silencio sintetizado puede mantenerla positiva. Un ensayo
+silencioso o dummy no acredita continuidad audible; aplicar [contratos de
+audio](audio-stream-contracts.md) para separar transporte y escucha real.
+
+En un ajuste visual localizado, confirmar la identidad del recurso desde el
+consumidor, no sólo por su silueta o nombre supuesto. Aislar el reemplazo con un
+recurso válido transparente cuando haga falta conservar su ruta de aceptación;
+borrarlo podría activar otro fallback y confundir la causa. Medir el delta del
+render real y su región, con controles de esquinas, paleta y arte que deben
+permanecer. Un delta nulo tras pasar el fixture exige revisar la reproducción o
+la identidad antes de declarar el defecto corregido.
+
 Cuando hagan falta documentos o estados de prueba, seleccionar un corpus pequeño por cobertura distinta: región, formato, progreso y transición que desbloquea cada caso. Registrar URL/fuente si es pública, hash, procedencia y checkpoint esperado; descartar casos redundantes o con modificaciones o estado desconocido que confundan la causa. Conservar originales inmutables y leer/importar sólo hacia una copia scratch. No incluir contenido protegido ni publicar documentos privados del usuario; si no hay permiso de redistribución, conservar evidencia privada o crear un sustituto saneado. Un corpus amplio sin checkpoints verificables no sustituye buenas reproducciones.
