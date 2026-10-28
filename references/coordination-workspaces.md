@@ -14,6 +14,8 @@ Si un rebase/merge falla, detener pruebas y pushes que dependan de esa operació
 
 Delegar sólo dentro de la autorización: pregunta acotada, contexto mínimo, restricciones, archivos/dependencias y evidencia esperada; conservar modelo/esfuerzo autorizados. Compartir resultados dentro del trabajo no autoriza comunicaciones externas, comentarios ni cierres de issues.
 
+Separar el pico/límite del árbol de procesos propio de la memoria física libre, que puede variar por cargas ajenas. Si un umbral externo cancela repetidamente el mismo trabajo, conservar cachés y checkpoints, registrar la causa y revisar la estrategia con los picos medidos y la preferencia vigente del usuario. Si éste cambia la restricción, revisar también los wrappers que aún la imponen; no perpetuar el gate anterior ni retirar límites útiles sin motivo. No confundir una cancelación del supervisor con OOM o fallo del producto, ni terminar aplicaciones ajenas para lograr margen. Un límite del propio harness insuficiente para su reserva de direcciones también requiere diagnóstico separado.
+
 ## Investigaciones con plazo fijo
 
 Dar al worker una pregunta causal concreta y un entregable que pueda sobrevivir
