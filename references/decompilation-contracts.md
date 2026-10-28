@@ -2,6 +2,8 @@
 
 Leer sólo al reconstruir código desde binarios, adaptar un runtime recuperado o evaluar un decompilado. OptiPort sigue siendo un método de mejora de software general; una aplicación con fuentes disponibles no necesita adoptar este flujo por usar una biblioteca nativa. Para buscar donantes, usar [investigación de repositorios](repository-research.md); para trabajo paralelo autorizado, [coordinación](coordination-workspaces.md).
 
+Si el producto es GBA y el trabajo trata su cierre, nombres, datos o port, cargar [cierre y portabilidad GBA](gba-closing.md). No aplicar sus reglas de hardware y formato a otros perfiles.
+
 ## Fijar qué se acepta
 
 | Objetivo | Evidencia necesaria y límite |
