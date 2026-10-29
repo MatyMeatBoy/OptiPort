@@ -61,6 +61,25 @@ por sí sola la sesión, GPU, Steam Input ni cliente de un Deck físico. Separar
 fixture de quoting, inicio del loader, primera presentación y confirmación real
 del reportero. Conservar progreso y ajustes entre pruebas.
 
+## Identidad de bibliotecas cargadas dinámicamente
+
+Si el bloqueo aparece al crear una ventana y SDL carga X11 mediante `dlopen`,
+comprobar los nombres compilados en SDL y los objetos realmente cargados.
+Una extracción en Windows puede convertir enlaces simbólicos en archivos
+ordinarios: deducir el nombre de runtime del nombre físico puede introducir
+`libX11.so` donde el ELF declara `DT_SONAME=libX11.so.6`. Con una copia del
+sistema ya cargada por otro componente, eso puede incorporar dos Xlib al mismo
+proceso. No asumir que todo bloqueo de ventana tiene este mecanismo.
+
+Cuando se confirme, corregir la generación desde el `DT_SONAME` del ELF,
+reconstruir la dependencia y comprobar también su caché y los bytes incluidos
+en el paquete. Comparar el mismo arranque con y sin una precarga controlada,
+registrando identidad/ruta de los objetos y creación real del renderer.
+Conservar overlays y la GPU en la prueba positiva; eliminarlos ocultaría la
+interacción. La reducción de dos copias a una demuestra ese contrato, mientras
+la confirmación del equipo afectado sigue siendo otra comprobación.
+[Caso verificado de generación y runtime](https://github.com/MatyMeatBoy/ReKHCoM/pull/520).
+
 ## Casos primarios leídos el 27/10/2026
 
 Estos casos aportan mecanismos y límites, no recetas para todos los ports.
