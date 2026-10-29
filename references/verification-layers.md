@@ -14,6 +14,23 @@ Aplicar según riesgo y plataforma, con criterios explícitos de salida. No exig
 | 8. Plataforma | Windows: ABI, foco y audio/GPU; Linux: ABI, librerías, permisos y runtime de distribución; Android: lifecycle, memoria y GPU/codec; web: límites de memoria, contexto gráfico y política de audio. Adaptar macOS y otros sistemas a sus backends. |
 | 9. Entrega | Build desde SHA registrado, dependencias y hashes, contenido permitido, prueba de arranque y recorrido afectado del paquete final, instalación aislada y rollback. Confirmación del reportero por separado. |
 
+## Distinguir el arnés del producto
+
+Un entorno aislado puede imponer políticas distintas de las del usuario.
+Ante un fallo ligado al mapa de memoria, registrar mitigaciones efectivas del
+proceso y flags del binario, además de arquitectura y direcciones observadas.
+En Windows, Mandatory ASLR puede reubicar imágenes aunque no declaren
+`DYNAMICBASE`; una comprobación de direcciones fijas puede fallar sólo bajo
+ese arnés. Comparar condiciones pertinentes sin cambiar protecciones del
+sistema ni retirar el guard que evita un acceso inválido.
+[Referencia de Microsoft](https://learn.microsoft.com/en-us/defender-endpoint/exploit-protection-reference#force-randomization-for-images-mandatory-aslr).
+
+Una diferencia de política es evidencia de una condición distinta, no prueba
+automática de causalidad ni de éxito fuera del aislamiento. Si el control
+normal agota el plazo mientras compite con otra carga, conservar ese resultado
+como inconcluso y repetirlo de forma comparable; no convertirlo en crash del
+producto ni en confirmación de que el problema desapareció.
+
 ## Términos útiles para decidir
 
 - **Backpressure:** limitar al productor cuando el consumidor no alcanza; no acumular memoria sin límite.

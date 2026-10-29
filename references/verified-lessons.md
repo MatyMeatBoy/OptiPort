@@ -33,6 +33,40 @@ Promover mecanismos comprobados; mantener tickets y resultados transitorios fuer
 
 Una API puede devolver un objeto no nulo antes de construir sus datos utilizables: `AddFont` no acredita que el atlas posterior pase `Build` ni que cada fuente esté cargada. Validar el resultado final y sus dimensiones, pertenencia al atlas, estado cargado y tamaño finito positivo; comprobar que los roles requeridos no sean nulos y pertenezcan por identidad al atlas antes de dereferenciarlos o admitir el recurso a los consumidores. Validar también el default efectivo: `FontDefault` nulo puede seleccionar legítimamente la primera fuente del atlas. Invalidar esos alias antes de `Clear`. En el caso verificado de fuentes, se reconstruyó una vez con una fuente incorporada y se volvió a validar; ante un segundo fallo se conservó el error y se terminó limpiamente antes de backend/frame. Mantener la configuración válida cuando funciona y declarar que el fallback puede perder lettering propio o glifos japoneses. Probar el consumidor real con merge rechazado, roles parciales/obsoletos, doble fallo y fuente válida; esa regresión del mecanismo no certifica todos los dispositivos.
 
+## Contratos de un shim gráfico compartido
+
+Un fallo de asignación puede devolver una textura nula y el crash aparecer
+después en filtrado, modulación o dibujo. Probar la implementación completa
+del shim con el fallo inyectado, incluyendo consumidores y limpieza parcial;
+validar sólo el creador no cubre ese recorrido. Revisar dimensiones, pitch,
+productos y desplazamientos en el ancho que realmente los consume cada API.
+Mantener controles válidos con comparación de píxeles y balance de ownership.
+
+Evitar una regla indiscriminada de «todo puntero nulo es inválido»: algunas
+APIs permiten superficies vacías o metadatos con píxeles diferidos. Conservar
+su creación legítima y rechazar su uso antes de leer los píxeles ausentes.
+Para blits escalados, limitar la iteración al rectángulo de destino visible
+antes de recorrerlo; recortar cada píxel después puede seguir ejecutando
+miles de millones de pasos fuera de pantalla. Comparar el resultado válido,
+recortes negativos y extremos acotados, además de NULL y tamaños inválidos.
+[Texturas](https://github.com/MatyMeatBoy/ReKHCoM/pull/521) y
+[superficies](https://github.com/MatyMeatBoy/ReKHCoM/pull/522) son ejemplos del
+mecanismo, no certificación de todos los drivers que usan el shim.
+
+## Reemplazo HD que participa en la composición original
+
+Una ilustración puede ser también el segundo término de un blend nativo.
+Eliminar su sprite y dibujar el PNG después cambia el cálculo anterior; una
+copia opaca del resultado nativo puede además tapar el reemplazo HD. Aislar
+capas con colores sintéticos distintos y comparar con el original antes de
+recolorear un efecto que puede ser legítimo. Conservar el objetivo de mezcla
+nativo, separar la luz aditiva sólo donde el contrato lo permita y mantener
+un resultado nativo completo hasta que preparación y dibujo HD funcionen.
+Vincular ese scratch al canvas y sus dimensiones actuales; comprobar resize,
+fallo de upload/dibujo y capacidades del host. Un fallback que conserva el
+original puede perder HD temporalmente: declararlo y comprobarlo como tal.
+[Caso de composición aditiva](https://github.com/MatyMeatBoy/ReKHCoM/pull/523).
+
 ## Arranque nativo e instalación en Android
 
 Si un launcher nativo devuelve un error, Android puede finalizar su Activity sin matar el proceso: un `ApplicationExitInfo` vacío no descarta ese fallo ni acredita que el arranque terminó. Correlacionar etapa, retorno nativo y PID antes de atribuirlo a un crash o a un segundo inicio. Conservar el error del subsistema en un buffer acotado antes de registrar, mostrar avisos o limpiar; detener los consumidores posteriores y desmontar sólo recursos inicializados. Inyectar fallos parciales y un diálogo no disponible verifica ese contrato, sin demostrar una causa del dispositivo ni recuperar un driver que falla dentro de una llamada. [Caso de diagnóstico SDL/GL](https://github.com/MatyMeatBoy/ReKHCoM/pull/444).
