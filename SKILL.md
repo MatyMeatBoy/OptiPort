@@ -85,6 +85,7 @@ Use this skill as a selective reference bank. Load only the module that changes 
 | Find evidence efficiently or resume an investigation | [Progressive retrieval](references/progressive-retrieval.md) |
 | Reproduce a scene, transition or timing failure | [Reproduction harnesses](references/reproduction-harnesses.md) |
 | Audio speed, queued units, bridge compatibility or producer starvation | [Audio stream contracts](references/audio-stream-contracts.md) |
+| Online latency, direct inputs, rollback, retransmission or pacing across peers | [Online simulation contracts](references/online-simulation-contracts.md) |
 | Linux software starts in a terminal but fails through a launcher or Steam Deck Gaming Mode | [Linux launch context](references/linux-launch-context.md) |
 | Locate load, frame or memory costs before optimizing | [Profiling](references/profiling.md) |
 | General coverage, devices and long sessions | [Verification layers](references/verification-layers.md) |

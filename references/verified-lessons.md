@@ -73,6 +73,22 @@ Si un launcher nativo devuelve un error, Android puede finalizar su Activity sin
 
 Cuando un paquete introduce identificadores consumidos por otro parser, comprobar el contrato de ese consumidor: `aapt` y `badging` aceptaron un proceso privado con guion que el instalador Android rechazó; cambiarlo a un identificador con guion bajo pasó la instalación aislada. Validar los nombres antes de empaquetar con rechazo explícito, no sólo con `assert`, y ejecutar también los negativos bajo `python -O`, que elimina esos asserts. Contrastar el validador con el parser real y probar el paquete exacto; una instalación correcta no certifica el ciclo de vida posterior ni otra versión de Android. [Caso experimental de empaquetado](https://github.com/MatyMeatBoy/ReKHCoM/pull/442).
 
+## Controles confirmados y replay pendiente
+
+Un protocolo reenviaba hasta32controles recientes aun cuando el receptor ya los
+había confirmado y retenía fuera de snapshots. Limitar la retransmisión al rango
+no confirmado redujo los bytes de protocolo en una carga equivalente, sin borrar
+el historial de replay ni perder entradas al drenar. Esa evidencia no mide RTT,
+CPU ni fluidez del producto. Otro caso reproducido retiraba la corrección de la
+cola y habilitaba hashes antes de resimular: separar replay en curso de dequeue
+evitó el falso desync, conservando el control de hashes iguales después del
+replay. Los [contratos de online](online-simulation-contracts.md) incluyen las
+precondiciones, pruebas y límites; no convertir32entradas ni un RTT probado en
+un presupuesto universal.
+
+[Regresiones y comparación del consumidor](https://github.com/MatyMeatBoy/ReKHCoM/commit/8c4202b03)
+documentan estos mecanismos; no constituyen una certificación ingame del motor.
+
 Al añadir una lección: aportar trigger, mecanismo, prueba antes/después y límites; comprobar que no impone a todos los proyectos un detalle propio de un software o plataforma.
 
 Al usar estas lecciones en una entrega, aplicar [preparación de release](release-readiness.md): la corrección y su harness son evidencia del mecanismo, mientras el paquete, flujo relacionado y plataformas afectadas requieren sus propias comprobaciones vigentes.
