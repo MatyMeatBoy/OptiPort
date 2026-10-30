@@ -28,6 +28,7 @@ Pídele:
 - Tiempos de carga, memoria y latencia de operaciones y regularidad de presentación mediante profiling.
 - Cachés, presupuestos, carga asíncrona, precarga y streaming.
 - Audio, vídeo, texturas, colas acotadas y trabajo sin progreso.
+- Online: separar transporte, simulación y presentación; medir tráfico, correcciones y cadencia por participante. Ver [contratos de online](references/online-simulation-contracts.md).
 - Suspensión, reanudación, limpieza de recursos y protección del guardado.
 - Logs rotativos, regresiones, pruebas prolongadas y builds verificables.
 - Organización del proyecto comprensible para personas, worktrees reunidos, releases y pruebas identificables, almacenamiento sin duplicaciones innecesarias y VM dimensionadas según su trabajo real. La [guía de organización y almacenamiento](references/workspace-storage.md) incluye ayudas visuales opcionales para carpetas y controles propios de ingeniería.
