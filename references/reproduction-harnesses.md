@@ -6,6 +6,13 @@ Registrar región/revisión e identidad del contenido sin redistribuirlo, estado
 
 Elegir un reloj explícito: pasos lógicos u operaciones para input determinista; reloj monotónico para latencia y timeouts. Distinguir pausa, falta de progreso y finalización. Si la reproducción necesita un estado que no se tiene, marcar esa limitación y ejecutar pruebas independientes; llegar a una pantalla inicial parecida no reproduce otra transición.
 
+Si replay y entrada física se mezclan, aislarlos para el control determinista y
+probar la entrada manual aparte. Registrar la configuración efectiva: variables
+heredadas, INI y cwd pueden inyectar controles, cambiar el perfil o dirigir cachés
+a otra carpeta. Un launcher normal debe seleccionar deliberadamente las opciones
+de diagnóstico que transmite; no heredar por accidente un replay, captura o modo
+de prueba. Conservar controles de entrada mixta como un caso distinto.
+
 Definir una aserción observable de entrada y salida de la transición: escena alcanzada, consumidor ejecutado, recurso usado, estado conservado o frame presentado según el fallo. Un log de intención o input enviado no demuestra que la transición ocurrió. Una captura negra en modo headless no es evidencia visual del resultado; usar el renderer/captura apropiados o limitar la conclusión a lo que se observó.
 
 Comprobar qué subsistema posee cada indicador antes de interpretar una discrepancia. Un resumen del documento, mapa o vista anterior puede permanecer intacto mientras otro modo trabaja correctamente. Seguir el productor del dato y observar el estado del consumidor activo con símbolos del binario exacto, una salida verificable o una captura adecuada. No corregir el motor sólo porque un indicador heredado parezca contradecir el escenario; registrar por separado ambos ámbitos.

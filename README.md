@@ -27,6 +27,7 @@ Pídele:
 - Fallbacks que conservan el software original cuando falla un recurso opcional.
 - Tiempos de carga, memoria y latencia de operaciones y regularidad de presentación mediante profiling.
 - Cachés, presupuestos, carga asíncrona, precarga y streaming.
+- Reutilización de runtimes/SDK y código generado con procedencia verificable; distinguir programas, variantes y pipelines preparados. Ver [contratos de adaptación](references/runtime-adaptation.md).
 - Audio, vídeo, texturas, colas acotadas y trabajo sin progreso.
 - Online: separar transporte, simulación y presentación; medir tráfico, correcciones y cadencia por participante. Ver [contratos de online](references/online-simulation-contracts.md).
 - Suspensión, reanudación, limpieza de recursos y protección del guardado.

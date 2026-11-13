@@ -30,6 +30,26 @@ No establecer una mejora porcentual sin valores comparables y denominador explí
 
 En un reemplazo que requiere varias asignaciones, adquirir y validar el candidato completo antes de publicar sus alias y liberar el recurso anterior, cuando el presupuesto permita su coexistencia. Si falla la segunda asignación, descartar sólo el candidato parcial y conservar el anterior usable; probar cada rechazo con el consumidor real y un control válido. Si el presupuesto impide coexistir, definir antes de retirarlo una ruta de degradación, reconstrucción acotada o salida controlada; no publicar `ready` ni dereferenciar un reemplazo fallido. Para objetos con preparación diferida, aplicar la [admisión del recurso y sus alias](verified-lessons.md#objetos-creados-con-preparación-diferida).
 
+## Visores y lectores del estado persistido
+
+Un álbum, índice o preview es un consumidor de lectura, pero puede interferir
+con la persistencia. Leer snapshots confirmados cuando existan; validar formato,
+longitudes y, cuando el formato los incluya, checksums antes de presentar recursos derivados. Mantener caché y
+exportaciones fuera de los datos originales, con temporales únicos para trabajos
+concurrentes, límites de decode y resultados ligados a la generación activa.
+Identificar si se muestra un recurso guardado, una exportación o una captura de
+diagnóstico: no intercambiarlos porque los tres sean imágenes.
+
+En Windows, si la lectura mantiene handles mientras el productor renombra o
+sustituye archivos, comprobar sus modos de compartición. Cuando el contrato
+requiera permitir ese reemplazo, el lector necesita permitir también la operación
+de borrado/renombrado —por ejemplo, `FILE_SHARE_DELETE` junto a los permisos
+compartidos pertinentes— y cerrar correctamente sus handles. Este flag permite
+la operación concurrente; no ordena borrar archivos ni constituye una transacción.
+[Contrato de CreateFileW](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilew).
+Probar lector y guardado concurrentes, archivo reemplazado/corrupto y cierre
+temprano. Una prueba aislada del parser no certifica esa concurrencia real.
+
 ## Ejemplos de aplicación, pendientes de medición propia
 
 | Aplicación | Hipótesis que comprobar | Evidencia necesaria |
