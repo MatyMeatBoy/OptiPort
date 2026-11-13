@@ -60,6 +60,48 @@ y mantenerlos hasta terminar replay, traducción o trabajos que los consuman.
 Probar sustitución/finalización con datos válidos y reutilización de la memoria
 prestada. Un caso de dibujo inicial correcto no valida todos los cambios de escena.
 
+## Retornos no locales entre guest y host
+
+Si el recompilador representa cada llamada guest mediante una llamada C nativa,
+`setjmp`/`longjmp` rompe la equivalencia entre RET guest y retorno C ordinario.
+Restaurar registros/SP/PC guest no retira los frames C intermedios. Añadir la
+dirección interior a la tabla de funciones puede ocultar el primer fallo de
+despacho mientras conserva un stack host incorrecto. Determinar si el motor usa
+retornos no locales realmente; no heredar la suposición contraria del donante.
+
+En esa arquitectura, un checkpoint nativo debe pertenecer al caller aún vivo
+que continuará después del save, no a un helper que ya retornó. Vincularlo al
+contexto guest/fiber y a la continuación comprobada; conservar las operaciones
+originales que guardan/restauran el buffer y sus valores de retorno. Los registros
+o flags cacheados en locales C pueden quedar obsoletos o indeterminados tras el
+salto: sincronizarlos de forma válida o desactivar esas optimizaciones sólo en
+los propietarios afectados. Respetar las restricciones del compilador para un
+checkpoint que retorna dos veces: antes de sincronizar tampoco puede leerse un
+local automático no volátil modificado y ya indeterminado. Conservar el estado
+que realmente restaura la API guest, sin inventar preservación adicional.
+Un `musttail` que elimina el frame propietario
+también elimina su checkpoint; tratar esos tail exits según su vida real.
+
+Invalidar checkpoints al retornar el propietario, al descartar descendientes
+durante el salto y al destruir/reiniciar su contexto. Aislar fibers aunque
+compartan thread host; TLS por sí solo no identifica su activación. El cleanup
+normal de C no se ejecuta necesariamente al saltar: definir quién retira esas
+estructuras y rechazar continuaciones vencidas o de otro contexto.
+
+Un salto que cruza servicios host puede omitir locks, contadores o recursos que
+su retorno normal liberaba. Comprobar esa frontera y rechazar las no soportadas;
+un contador de profundidad sólo protege si su seguimiento está activado en todas
+las configuraciones admitidas. No restaurar un contador a ciegas como sustituto
+de la limpieza. Usar el mecanismo nativo compatible con ABI y protecciones de
+la plataforma; esto no implementa automáticamente unwinding C++ ni otras APIs
+de excepciones.
+
+Probar el código emitido real con optimización, saves anidados y múltiples
+buffers, valor cero/no cero, retorno normal, scopes descartados, contexto ajeno
+y seguimiento host desactivado. Después repetir el checkpoint que fallaba y su
+transición real. El fixture CPU acredita el mecanismo; una transición GPU
+superada no certifica todo el SDK, otros tipos de unwind ni otras plataformas.
+
 ## Precarga gráfica: cuatro unidades distintas
 
 | Unidad | Qué identifica y qué deja pendiente |
