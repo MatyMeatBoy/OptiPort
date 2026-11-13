@@ -44,6 +44,25 @@ de un donante a todas las texturas de otro motor.
 | CPU y exportación | Conservar dimensiones, pitch, orden de filas y capacidad del buffer lógico. Un readback por vecino más cercano puede conservar tamaños y perder el filtro de reducción esperado. Definir color lineal/sRGB, alpha y filtro según el resultado requerido. |
 | Shaders y cachés | Revisar coordenadas de fragmento, integer fetch, consultas de tamaño, storage y LOD. Incluir escala/clase/generación en las identidades que cambien su significado; no invalidar todo indiscriminadamente. |
 
+## Transferencia digital de color
+
+Separar los valores codificados de los píxeles, el formato base del recurso,
+la vista usada por su productor y la transferencia del destino. Un recurso
+con formato base sRGB puede haber sido escrito mediante un alias UNORM; una
+copia/blit que consulta el formato base puede decodificar otra vez bytes ya
+preparados para la pantalla. Corregir la frontera de transferencia demostrada,
+sin compensarla con saturación, contraste o gamma artística.
+
+La corrección depende también del destino: un swapchain sRGB aplica su propia
+codificación y puede convertir en doble encode una corrección válida para
+UNORM. Probar las clases fuente/destino realmente admitidas, swizzle, mips,
+capas, uso, barreras y vida útil de vistas compatibles; mantener separadas las
+rutas float/HDR y formatos cuyo contrato no se ha establecido. Comparar bytes
+digitales del mismo cuadro, tamaño y crop antes de atribuir diferencias a la
+pantalla. Una coincidencia exacta en una GPU no certifica las demás.
+
+Contrato primario: [blit y conversión sRGB en Vulkan](https://docs.vulkan.org/refpages/latest/refpages/source/vkCmdBlitImage.html).
+
 ## Presupuestar la memoria que realmente se usa
 
 Duplicar cada eje multiplica por cuatro los píxeles de los recursos afectados;
@@ -64,6 +83,27 @@ Elegir una política de fallo concreta: mantener la ruta nativa antes de activar
 la alternativa, o terminar con un error accionable si el contrato ya exige los
 recursos ampliados. Un fallo tardío no prueba que sea posible reducir escala en
 caliente. Validar ambas decisiones sin prometer recuperación que no existe.
+
+### Importación de memoria host
+
+Cuando una API devuelve tipos compatibles o un selector tiene fallback,
+comprobar las propiedades del tipo finalmente elegido: compatibilidad de
+binding no garantiza visibilidad/coherencia para el acceso que hace el host.
+Documentar quién posee map/flush/invalidate, alineación, rangos y finalización
+GPU. La memoria importada por un puntero externo no hereda automáticamente el
+protocolo de una asignación gestionada por el runtime.
+
+Si el acceso directo exige coherencia que el tipo no ofrece, conservarlo solo
+donde el contrato se cumple y elegir almacenamiento gestionado con flush,
+invalidate y sincronización explícitos donde falte. Activar el fallback por
+capacidad real del recurso, no por vendor, ni desactivar globalmente una ruta
+válida. Inyectar tipos compatibles no coherentes, fallos de importación y un
+control coherente. El fixture demuestra esa política; atribuirle el fallo de
+una GPU exige observar su selección y sus transferencias reales.
+
+Contrato primario: [importación de punteros host en Vulkan](https://docs.vulkan.org/refpages/latest/refpages/source/VkImportMemoryHostPointerInfoEXT.html).
+La aplicación conserva la responsabilidad de sincronizar los accesos y mantener
+válido el rango importado durante la vida del objeto.
 
 ## Escalado temporal y cobertura de GPU
 

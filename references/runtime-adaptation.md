@@ -139,6 +139,27 @@ tiempo de inicio. Desplazar trabajo fuera de la interacción acredita precarga,
 no una mejora global de frame time si las mediciones son mixtas. Las escenas
 no visitadas y estados no registrados siguen pendientes.
 
+## Efectos observables y pipelines pendientes
+
+Antes de permitir omitir trabajo gráfico mientras se compila un pipeline,
+establecer sus efectos observables. Un draw puede escribir SSBO o imágenes
+storage que leen captura, evaluación, simulación o exportación; un render
+target reciente no convierte esas escrituras en opcionales. Si la reflexión
+requiere terminar una traducción todavía pendiente, no clasificar la etapa
+desconocida como pura. Distinguir escritura real de lectura sola y de flags
+de coherencia que no implican store.
+
+Para operaciones obligatorias, usar el contrato real de espera/publicación
+del pipeline, incluidos trabajos ya encolados y timeouts parciales. Un wrapper
+llamado síncrono puede retornar pending si no se solicita esperar. Conservar
+el error terminal y distinguirlo de «aún pendiente»; agotar un tramo de espera
+no autoriza descartar la operación requerida. Una cancelación o un error
+controlado deben abortar la operación o sesión según su contrato, con limpieza
+acotada; no simular éxito parcial ni continuar consumiendo datos ausentes.
+Mantener async y sus políticas
+válidas para trabajo que sí sea opcional. Auditar por separado dispatch compute:
+no trasladar automáticamente a él una hipótesis sobre draws gráficos.
+
 ## Procedencia transitiva de importaciones y código generado
 
 Para reutilizar un resultado, vincularlo a sus entradas y a su productor:
@@ -147,6 +168,21 @@ versión/configuración del generador, parches y flags que afecten su salida; ha
 de los archivos realmente generados. Validar también índices y salidas importadas
 que consume el build. Un manifiesto sólo con hashes de entrada no detecta una
 salida modificada después.
+
+Identificar también el entorno y las dependencias que ejecuta el productor,
+no las que se recuerdan por nombre. Si un loader usa un descompresor externo,
+su identidad pertinente debe formar parte de la receta reutilizable junto a
+intérprete, generador y flags. Un módulo adicional en disco puede cambiar el
+layout aunque no esté en el manifiesto: rechazar entradas inesperadas que
+consume el generador o verificarlas e incluirlas en la identidad antes del hit.
+
+Una copia de caché debe ser independiente y verificarse después de copiar;
+comprobar solo el origen no detecta una copia alterada. Limitar entradas y
+bytes, validar ownership y rutas resueltas, y rechazar symlinks/reparse points
+antes de limpieza recursiva. No convertir un objeto desconocido en propiedad
+del caché para cumplir el presupuesto. Corrupto/no disponible implica miss y
+generación fresca; no reutilizar ejecutables/objetos nativos solo porque sus
+fuentes generadas pasaron. Verificar originales también en la ruta caliente.
 
 Una opción como `--no-generate` debe comprobar esos vínculos antes de compilar,
 no sólo la existencia del directorio. Si se confía en metadata que alimenta

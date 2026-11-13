@@ -19,6 +19,21 @@ Comprobar qué subsistema posee cada indicador antes de interpretar una discrepa
 
 Comparar el control negativo que exhibe el fallo con el positivo corregido, manteniendo escenario y condiciones. Para fallos inyectados, incluir también recurso válido y verificar el consumidor real, limpieza, límites de trabajo y fallback. Si el negativo no falla, el ensayo no demuestra esa corrección. Registrar repeticiones y resultados sin extrapolar a otras regiones, builds o dispositivos.
 
+Comprobar si screenshot, headless, trazas o modo determinista cambian async,
+esperas, temporización, cachés o capturas del producto. Registrar la política
+efectiva desde el código y el proceso ejecutado; una inicialización llamada
+no prueba que su consulta de estado siga habilitada. Una imagen diagnóstica
+correcta no valida una ruta normal que omite trabajo por compilación pendiente.
+Separar equivalencia visual, aceptación funcional y medición de rendimiento.
+
+Restaurar para cada control una copia identificada del mismo estado inicial,
+incluidas variantes transaccionales/backups cuando el producto puede recuperar
+de ellas. Registrar hashes y generación; no editar progreso para forzar el
+checkpoint. Para una cadena imagen → buffer → codificador → miniatura →
+selección/evaluación, observar cada frontera y repetir el consumidor original.
+Un JPEG limpio no prueba identificación; un thumbnail corrupto y un rechazo
+simultáneos no prueban causalidad. Contar contenido único, no copias del banco.
+
 En pruebas de audio, exigir muestras de productor no nulas y la pista activa
 prevista antes de evaluar una interrupción. Registrar recuperaciones además de
 la cola: llenar con silencio sintetizado puede mantenerla positiva. Un ensayo

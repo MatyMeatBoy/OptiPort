@@ -12,6 +12,24 @@ En Auto, usar identificación fiable y actividad de entrada pertinente; definir 
 
 Localizar nombres y texto, comprobar cobertura de glifos, ancho/escala, contraste y alternativa textual accesible. No depender sólo del color o un símbolo que la fuente no contiene. Reutilizar un atlas pequeño/cacheado y actualizar prompts al cambiar mapping/dispositivo/locale; no cargar imágenes por cuadro. Usar arte propio o con licencia compatible y conservar atribuciones; nombres de familias no conceden derechos sobre iconos o marcas.
 
+## Continuidad de captura, sensores y ajustes
+
+Una muestra relativa retenida por cuadro debe pertenecer también a la
+generación de captura/dispositivo que la produjo. Liberar y recapturar entre
+dos polls puede ocurrir sin cambiar el frame: un booleano observado al final
+no revela la discontinuidad. Propagar un epoch desde el dueño de la captura
+e invalidar muestras anteriores. Probar reposo, delta conocido, mismo frame,
+foco perdido/recuperado y cuadro detenido, conservando sensibilidad y binding.
+
+Reiniciar muestras/orientación fusionadas al cambiar o perder fuente, apagar
+sensores o interrumpirse su lectura según el contrato. Comprobar el ajuste
+antes de habilitar hardware y revertir habilitaciones parciales; una prueba
+mock no debe encender sensores físicos. No duplicar con estáticos no atómicos
+una configuración live que ya se publica de forma segura: una lectura antigua
+puede terminar después de la nueva y dejar un valor viejo bajo una versión
+nueva. Reproducir esa intercalación con hilos coordinados y comprobar el estado
+posterior, no solo el valor devuelto por cada lector.
+
 ## Validación pertinente
 
 Para una mira o cursor con movimiento interno, distinguir posición de ventana,

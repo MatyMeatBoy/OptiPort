@@ -8,6 +8,17 @@ Instrumentar sólo las etapas necesarias para localizar el coste: lectura, decod
 
 Usar latencia de carga, tiempos de frame p50/p95/p99 y stalls cuando existan muestras suficientes. Registrar el tamaño de muestra y la ventana: un promedio de FPS no describe regularidad ni una sesión corta demuestra ausencia de acumulación. Para memoria, distinguir RSS/private, buffers propios y VRAM; medir picos durante solapamiento de recursos además del estado estable.
 
+Mantener el recorrido completo como resultado principal si fue la ventana
+acordada. Un segmento posterior puede diagnosticar calentamiento, pero no
+reemplaza una cola completa peor ni convierte resultados mixtos en ganancia
+global. Conservar denominadores, repeticiones y actividad concurrente; separar
+generación, compilación/prewarm, tiempo de entrada, intervalos de juego,
+presentación y GPU busy. Una mejora de caché de build no acredita más FPS, y
+un contador de espera cero no identifica por exclusión todos los picos restantes.
+
+Para comprobar que el observador conserva la política de ejecución, usar
+[reproducciones y harnesses](reproduction-harnesses.md).
+
 Elegir un cambio ligado al cuello observado y verificar rendimiento junto con calidad, input, resultados y limpieza. Conservar baseline y resultados comparables, incluidos efectos adversos. Si no hay mejora medible, volver a la hipótesis en lugar de inventar porcentajes; resultados de un equipo no certifican otra plataforma. Para publicar, aplicar los controles pertinentes del paquete en [preparación de entrega](release-readiness.md).
 
 ## Vista profunda de tirones

@@ -22,7 +22,7 @@ No establecer una mejora porcentual sin valores comparables y denominador explí
 
 ## Mecanismos y pruebas que deben conservarse
 
-- **Memoria y caché:** limitar bytes y entradas, contar recursos simultáneos y proteger los activos. La clave incluye identidad, revisión, parámetros, unidades y contexto pertinente; invalidar y liberar sin duplicar ownership. Verificar presión, fallo parcial, expulsión y recarga.
+- **Memoria y caché:** limitar bytes y entradas, contar recursos simultáneos y proteger los activos. La clave incluye identidad, revisión, parámetros, unidades y contexto pertinente; invalidar y liberar sin duplicar ownership. Verificar presión, fallo parcial, expulsión y recarga. Para código generado, comprobar también [procedencia transitiva, entorno y copia independiente](runtime-adaptation.md#procedencia-transitiva-de-importaciones-y-código-generado).
 - **Carga asíncrona:** colas acotadas, cancelación y generaciones por documento o vista. Publicar sólo resultados de la revisión activa; respetar afinidad del hilo de UI/GPU. Probar cambios rápidos, cierre durante carga y consumidor lento.
 - **Ciclo de vida:** reiniciar contextos y dispositivos, pausar/reanudar y cerrar sin esperar indefinidamente. Recursos de generaciones anteriores no pueden reaparecer tras su invalidación.
 - **Transacciones:** comprobar escritura, validación y reemplazo antes de cambiar el estado en memoria. Ante error conservar documento anterior, estado pendiente y capacidad de recuperación; verificar también cancelación y falta de espacio.
