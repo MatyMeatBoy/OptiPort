@@ -45,3 +45,9 @@ Separar candidato local cerrado, assets subidos a draft y release pública. Ante
 Un fallo reproducible conocido bloquea declarar lista la entrega con ese alcance. Corregirlo y repetir la regresión o reducir explícitamente el alcance de una prerelease limitada ya autorizada; no presentar el fallo como resuelto. La evidencia pendiente impide afirmar verificación de esa plataforma o función. No prometer ausencia de bugs ni «arreglado en todas las plataformas» sin evidencia correspondiente.
 
 Un fallback intencional puede conservar software y progreso reduciendo calidad; registrar su causa y qué función/calidad se pierde. No ocultar pérdida de HD, audio, vídeo u otra función bajo una afirmación de paridad o estabilidad. Una prerelease limitada debe nombrar plataformas, arquitecturas, funciones y comprobaciones pendientes para que el usuario pueda decidir con información concreta.
+
+## Notas con «comprobado» y «no comprobado»
+
+En cada entrega de prueba, listar por separado lo comprobado (con su medida o hash y la plataforma exacta) y lo no comprobado: lo medido pero no percibido por una persona, la mitad de un paquete multi-arquitectura que el emulador no ejecuta, hardware real y escenas reportadas que un banco sólo aproxima. Si una entrega resulta defectuosa, publicar la corrección con su medición antes/después y marcar la nota anterior como sustituida en lugar de editar su historia. Las verificaciones hechas después de publicar desde las mismas fuentes se añaden indicando ese orden.
+
+Las imágenes o contenidos de terceros en un repositorio público son una decisión de quien posee el proyecto: no incorporarlos sin su confirmación explícita y mantener las entradas propietarias fuera de repositorio y paquetes.
