@@ -104,6 +104,7 @@ documentan estos mecanismos; no constituyen una certificación ingame del motor.
 | Apertura de contenido con éxito y objeto ausente | Un proxy aceptaba una operación no implementada sin entregar su objeto. El caller seguía una ruta de éxito y dereferenciaba NULL. Un error real expuso el aborto del SDK en vez de crear un fallback; la ruta host alternativa necesitó su propio contrato y decisión funcional. Revisar el ciclo completo de los servicios cuyo inicializador se sustituyó. |
 | Caché de importación o generación que sólo mira entradas | Una metadata JSON modificada, un índice alterado y código generado obsoleto podían eludir comprobaciones parciales. Rederivar metadata desde contenido verificado y vincular receta/entradas/salidas permitió rechazarlos en regresiones separadas, manteniendo la reutilización válida. Los hashes no prueban que el producto sea funcional. |
 | Precarga que admite un archivo anterior o semillas dañadas | Validar sólo la cabecera no detectaba una cola de registro truncada; anexar semillas detrás dañaba su lectura. Además, entorno y herramienta podían elegir carpetas distintas y aceptar una salida vieja. Validar registros completos y usar el mismo destino efectivo corrigió esos mecanismos. La precarga comprobada no acredita variantes no observadas ni una mejora global de frame time. |
+| El SDK hace longjmp a una continuación interior sin función registrada | El buffer restauraba el estado guest, pero el recompilador usaba retornos C ordinarios y locales cacheados. Un checkpoint nativo en el caller vivo, con scopes por contexto y límites de servicios host, retiró las llamadas jóvenes sin reentrar por una función nueva. Pasaron casos CPU optimizados y la transición GPU que antes fallaba, incluida la evaluación del tutorial y entrada al primer recorrido; no acredita unwinding C++, todo el SDK u otras plataformas. |
 
 La [guía de adaptación de runtimes](runtime-adaptation.md) desarrolla estos
 contratos, la distinción entre programa/variante/pipeline y la reutilización de
@@ -113,8 +114,9 @@ interfaz no se promocionan aquí a una certificación de todas las fotos ni de
 guardados concurrentes: comprobar el consumidor real sigue pendiente de cada producto.
 
 Trazabilidad de las adaptaciones y regresiones: [fronteras de servicios y
-procedencia](https://github.com/MatyMeatBoy/NewSnapRecomp/commit/48547c32daac7171a31f5edbc7d129359ff92f73)
-y [preparación y framing de grabaciones](https://github.com/MatyMeatBoy/NewSnapRecomp/commit/99a98c773fe583f03983fc47003f8781f7ec1495).
+procedencia](https://github.com/MatyMeatBoy/NewSnapRecomp/commit/48547c32daac7171a31f5edbc7d129359ff92f73),
+[preparación y framing de grabaciones](https://github.com/MatyMeatBoy/NewSnapRecomp/commit/99a98c773fe583f03983fc47003f8781f7ec1495)
+y [retornos no locales y continuidad del tutorial](https://github.com/MatyMeatBoy/NewSnapRecomp/commit/8d2850814a65e526fee7b21ee4da80b4578331d8).
 El acceso a ese repositorio depende de sus permisos. Los controles sintéticos
 están en sus fuentes; dumps, imágenes y logs de ejecución permanecen privados.
 Si no se dispone de esa evidencia, usar el contrato como guía de prueba, sin
