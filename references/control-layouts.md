@@ -14,4 +14,13 @@ Localizar nombres y texto, comprobar cobertura de glifos, ancho/escala, contrast
 
 ## Validación pertinente
 
+Para una mira o cursor con movimiento interno, distinguir posición de ventana,
+delta relativo del ratón, stick emulado, sensores y estado de cámara del motor.
+Comparar reposo → movimiento conocido → reposo, además de captura/liberación y
+cambio de foco. La posición visual fuera del centro no demuestra deriva: el
+producto puede conservar puntería libre dentro de un marco. Medir entradas y
+transición contra un control conocido antes de forzar recentrado o mover el HUD.
+Al adoptar defaults de otro producto, comprobar cada acción semántica —por
+ejemplo, disparar frente a interactuar— sin sobrescribir rebinding explícito.
+
 Probar acción→binding→prompt en cada familia implementada, override/Auto, convenciones regionales y rebinding. Incluir tutorial real, confirm/cancel, teclado+mandos mezclados, hotplug/desconexión y dispositivo desconocido. Revisar localización/accesibilidad y que invalidar la caché actualice el prompt sin perder input ni introducir cargas por frame. Documentar familias no implementadas o no probadas; no afirmar soporte universal por reconocer un nombre de dispositivo.

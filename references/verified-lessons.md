@@ -89,6 +89,30 @@ un presupuesto universal.
 [Regresiones y comparación del consumidor](https://github.com/MatyMeatBoy/ReKHCoM/commit/8c4202b03)
 documentan estos mecanismos; no constituyen una certificación ingame del motor.
 
+## Servicios sustituidos, metadatos y preparación gráfica
+
+| Situación comprobada | Mecanismo, prueba útil y límite |
+| --- | --- |
+| Dibujo vacío con etapas inválidas tras instalar shaders | El programa conservaba controles prestados que el productor reutilizaba. Poseer una copia por etapa hasta la retirada de sus consumidores cambió la salida vacía por la interfaz esperada. Verificar código y metadatos por separado y repetir reemplazo/finalización; esa primera escena no certifica todo el renderer. |
+| Apertura de contenido con éxito y objeto ausente | Un proxy aceptaba una operación no implementada sin entregar su objeto. El caller seguía una ruta de éxito y dereferenciaba NULL. Un error real expuso el aborto del SDK en vez de crear un fallback; la ruta host alternativa necesitó su propio contrato y decisión funcional. Revisar el ciclo completo de los servicios cuyo inicializador se sustituyó. |
+| Caché de importación o generación que sólo mira entradas | Una metadata JSON modificada, un índice alterado y código generado obsoleto podían eludir comprobaciones parciales. Rederivar metadata desde contenido verificado y vincular receta/entradas/salidas permitió rechazarlos en regresiones separadas, manteniendo la reutilización válida. Los hashes no prueban que el producto sea funcional. |
+| Precarga que admite un archivo anterior o semillas dañadas | Validar sólo la cabecera no detectaba una cola de registro truncada; anexar semillas detrás dañaba su lectura. Además, entorno y herramienta podían elegir carpetas distintas y aceptar una salida vieja. Validar registros completos y usar el mismo destino efectivo corrigió esos mecanismos. La precarga comprobada no acredita variantes no observadas ni una mejora global de frame time. |
+
+La [guía de adaptación de runtimes](runtime-adaptation.md) desarrolla estos
+contratos, la distinción entre programa/variante/pipeline y la reutilización de
+código generado. Los offsets, fuentes privadas y checkpoints concretos se
+conservan en el proyecto de origen. Las pruebas del lector de un álbum o de su
+interfaz no se promocionan aquí a una certificación de todas las fotos ni de
+guardados concurrentes: comprobar el consumidor real sigue pendiente de cada producto.
+
+Trazabilidad de las adaptaciones y regresiones: [fronteras de servicios y
+procedencia](https://github.com/MatyMeatBoy/NewSnapRecomp/commit/48547c32daac7171a31f5edbc7d129359ff92f73)
+y [preparación y framing de grabaciones](https://github.com/MatyMeatBoy/NewSnapRecomp/commit/99a98c773fe583f03983fc47003f8781f7ec1495).
+El acceso a ese repositorio depende de sus permisos. Los controles sintéticos
+están en sus fuentes; dumps, imágenes y logs de ejecución permanecen privados.
+Si no se dispone de esa evidencia, usar el contrato como guía de prueba, sin
+afirmar haber reproducido el caso ni certificar su runtime.
+
 Al añadir una lección: aportar trigger, mecanismo, prueba antes/después y límites; comprobar que no impone a todos los proyectos un detalle propio de un software o plataforma.
 
 Al usar estas lecciones en una entrega, aplicar [preparación de release](release-readiness.md): la corrección y su harness son evidencia del mecanismo, mientras el paquete, flujo relacionado y plataformas afectadas requieren sus propias comprobaciones vigentes.

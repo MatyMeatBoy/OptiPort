@@ -26,6 +26,12 @@ Un 403 puede ser autenticación, permisos o rate limit; revisar respuesta/header
 
 Para candidatos binarios o SDK, continuar con [contratos de decompilación](decompilation-contracts.md). Para una biblioteca ordinaria bastan sus contratos de API, formato, concurrencia y pruebas pertinentes: no exigir identidad binaria a una migración funcional que no la requiere.
 
+Al reutilizar un runtime o recompilador, distinguir código incluido, enlazado,
+activo y verificado en el objetivo. La [adaptación de runtimes](runtime-adaptation.md)
+detalla los límites entre infraestructura común, parches del donante, servicios
+del SDK y precarga gráfica; no trasladar todas las opciones del menú como si
+ya tuvieran efecto correcto en otro motor.
+
 ## Verificar afirmaciones de completitud
 
 Antes de usar «100%» como señal, fijar commit, versión/región y denominador: bytes, funciones, unidades enlazadas, C recuperado, datos medidos o nombres. Consultar README y generador del reporte; cuando exista, descargar el artefacto CI asociado al mismo SHA y revisar sus cifras/exclusiones y el job que valida el producto. Un workflow en verde puede verificar sólo código con assets sustituidos, conservar ASM original o medir datos totales cero. No convertir eso en «todo el programa recuperado en C» ni «todos los datos entendidos».
