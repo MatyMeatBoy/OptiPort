@@ -20,6 +20,10 @@ del objetivo; compartir plataforma no acredita esos contratos. Conservar una
 adaptación reproducible sobre el donante intacto, con rechazo de seams que ya
 no coincidan, si ese mecanismo encaja con el proyecto.
 
+Al cambiar resolución, composición o upscalers, seguir los [contratos de gráficos
+y memoria](graphics-memory.md): las dimensiones del motor, backing físico y
+coordenadas de cada consumidor pueden tener dueños distintos.
+
 ## Inicialización y servicios sustituidos
 
 Si el host reemplaza `Initialize`, revisar los efectos que dejan de ocurrir:

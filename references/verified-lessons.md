@@ -120,6 +120,22 @@ están en sus fuentes; dumps, imágenes y logs de ejecución permanecen privados
 Si no se dispone de esa evidencia, usar el contrato como guía de prueba, sin
 afirmar haber reproducido el caso ni certificar su runtime.
 
+## Escalado que respeta composición y memoria
+
+| Situación comprobada | Mecanismo, prueba útil y límite |
+| --- | --- |
+| El target crece y el logo sigue recortado | El motor amplió recursos de escena, pero el caller volvió a guardar dimensiones nativas y la salida conservó un backing menor. Corregir las operaciones acopladas del caller y el recurso de salida identificado devolvió el logo completo en las capturas revisadas. Una llamada interceptada con ABI correcto no actualiza automáticamente los valores que el caller conserva. |
+| Un backing ampliado necesita otra escala de raster | El motor ya producía coordenadas ampliadas. Conservar la escala física para readback/presentación y dejar a uno la escala de raster sólo en esa clase evitó aplicar la ampliación dos veces. El backing ampliado usa asignación propia, sin vincular más bytes al pool lógico original. Esa clasificación no habilita escalado general de texturas ni acredita todas las copias. |
+| Cero errores gráficos con geometría desalineada en otro modo | Una prueba portátil mostró bordes y geometría incorrectos aunque la validación no reportaba fallos. El modo conocido conservó su ruta nativa y la combinación defectuosa quedó excluida; las pruebas TV y portátil no se intercambian. Las escenas iniciales revisadas no certifican fotografía, puntuación, persistencia ni todas las GPU. |
+
+La [guía de gráficos y memoria](graphics-memory.md) convierte estos mecanismos
+en decisiones reutilizables para render, preview y exportación. La evidencia del
+[cambio de integración](https://github.com/MatyMeatBoy/NewSnapRecomp/commit/9b9ff2a1a001a0f95c763e0e05f9dff69381ca7d)
+y sus [límites de supersampling](https://github.com/MatyMeatBoy/NewSnapRecomp/blob/9b9ff2a1a001a0f95c763e0e05f9dff69381ca7d/docs/SUPERSAMPLING.md)
+no demuestran reducción de memoria o aceleración: faltan comparaciones equivalentes
+para esas afirmaciones. Los enfoques de los donantes informaron la investigación;
+sus offsets, excepciones, presupuestos y licencias no se trasladan al nuevo motor.
+
 Al añadir una lección: aportar trigger, mecanismo, prueba antes/después y límites; comprobar que no impone a todos los proyectos un detalle propio de un software o plataforma.
 
 Al usar estas lecciones en una entrega, aplicar [preparación de release](release-readiness.md): la corrección y su harness son evidencia del mecanismo, mientras el paquete, flujo relacionado y plataformas afectadas requieren sus propias comprobaciones vigentes.

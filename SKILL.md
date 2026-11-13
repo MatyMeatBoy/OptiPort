@@ -78,6 +78,7 @@ Use this skill as a selective reference bank. Load only the module that changes 
 | Adapt optional work to weaker hardware without penalizing stronger devices | [Adaptive performance](references/adaptive-performance.md) |
 | Implement through understood engine internals or decompiled source | [Engine-informed implementation](references/engine-informed-implementation.md) |
 | Reuse a runtime, replace SDK services, prepare shader variants/pipelines or reuse generated code | [Runtime adaptation contracts](references/runtime-adaptation.md) |
+| Change internal resolution, composition, GPU allocations or temporal upscalers | [Graphics and memory contracts](references/graphics-memory.md) |
 | Recover source, verify matching binaries or evaluate decompilation progress | [Decompilation contracts](references/decompilation-contracts.md); load only for binary/source recovery work |
 | Clarify controls, status, translations or responsive previews | [UX wording and localization](references/ux-localization.md) |
 | Coordinate authorized workers or finish isolated workspaces | [Coordination and workspace hygiene](references/coordination-workspaces.md) |
