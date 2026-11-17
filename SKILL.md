@@ -74,6 +74,10 @@ Use this skill as a selective reference bank. Load only the module that changes 
 | Need | Read when relevant |
 | --- | --- |
 | Portable control layouts, bindings and tutorial button prompts | [Control layouts](references/control-layouts.md) |
+| Legacy Windows PC launch, per-user storage, binary hooks or aspect/window adaptation | [PC modding](references/pc-modding.md) |
+| Render limits, logic Hz, display refresh or independent UI/media cadence | [Presentation clocks](references/presentation-clocks.md) |
+| Find licensed controller packs or implement Xbox/PS4/Switch/Deck prompt families | [Controller assets](references/controller-assets.md) |
+| Audit original serializers, references, padding, RNG or cross-process initial state | [Logical state audits](references/logical-state-audits.md) |
 | Adapt presentation from a remake/remaster while preserving original rules | [Remaster equivalence](references/remaster-equivalence.md) |
 | Adapt optional work to weaker hardware without penalizing stronger devices | [Adaptive performance](references/adaptive-performance.md) |
 | Implement through understood engine internals or decompiled source | [Engine-informed implementation](references/engine-informed-implementation.md) |
