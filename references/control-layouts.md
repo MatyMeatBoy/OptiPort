@@ -42,3 +42,7 @@ Al adoptar defaults de otro producto, comprobar cada acción semántica —por
 ejemplo, disparar frente a interactuar— sin sobrescribir rebinding explícito.
 
 Probar acción→binding→prompt en cada familia implementada, override/Auto, convenciones regionales y rebinding. Incluir tutorial real, confirm/cancel, teclado+mandos mezclados, hotplug/desconexión y dispositivo desconocido. Revisar localización/accesibilidad y que invalidar la caché actualice el prompt sin perder input ni introducir cargas por frame. Documentar familias no implementadas o no probadas; no afirmar soporte universal por reconocer un nombre de dispositivo.
+
+Para localizar packs y contrastar Xbox/PS4/Switch/Steam Deck, consultar el
+[catálogo de assets de controles](controller-assets.md), incluida procedencia,
+licencias y límites de Steam Input/hardware.

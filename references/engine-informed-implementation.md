@@ -44,3 +44,7 @@ Consultar el [catálogo de software](source-catalog.md) si aporta un mecanismo q
 
 Si el producto adapta la presentación de un remake/remaster, verificar las [equivalencias de datos y representación](remaster-equivalence.md), especialmente capacidad, interpolación y grupos animados; compartir assets no demuestra compartir reglas.
 
+
+Para el recorrido de compatibilidad de ejecutables Windows heredados, ver
+[modding de PC](pc-modding.md). Para serializers originales y comparación entre
+procesos, ver [auditoría de estado lógico](logical-state-audits.md).

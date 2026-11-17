@@ -60,3 +60,23 @@ temprano. Una prueba aislada del parser no certifica esa concurrencia real.
 | Aplicación de escritorio | IO asíncrona puede reducir bloqueos de interfaz | Mismo archivo y operación; respuesta de UI, duración total, persistencia y cierre seguro |
 
 Estos ejemplos orientan pruebas; no afirman ganancias observadas. Usar [capas de verificación](verification-layers.md) y [preparación de entrega](release-readiness.md) según el cambio y el alcance prometido.
+
+## Convertir evidencia en aprendizaje reutilizable
+
+Tras un bloque verificado, extraer el trigger, contrato que falló, mecanismo,
+control negativo/positivo y límites de aceptación. Promover la regla que cambia
+la siguiente decisión, no el relato de la sesión ni sus direcciones, PIDs,
+rutas privadas o constantes particulares. Conservar la evidencia temporal en el
+proyecto y enlazar una fuente pública estable cuando exista. Una hipótesis o
+función aún no ejercitada no se convierte en lección verificada.
+
+Antes de aplicarla a otro producto, comprobar si comparte productor/consumidor,
+ABI, unidades, reloj, ownership y resultado esperado. Validar con sus entradas
+reales y gates pertinentes; no copiar su parche, presupuesto o default por
+similitud superficial. Mantener la lección acotada y actualizarla cuando una
+nueva prueba contradiga su alcance. Esto es mejora de instrucciones y método,
+no entrenamiento de pesos ni garantía automática sobre proyectos futuros.
+
+Para cadencias de UI, media y trabajo autoritativo, ver
+[relojes de presentación](presentation-clocks.md); el principio se aplica fuera
+del software por cuadros sin exigir una arquitectura de motor de juego.
